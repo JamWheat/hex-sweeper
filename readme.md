@@ -38,7 +38,7 @@ When finished, the game will play much the same as the classic game Minesweeper
 - The game will have sounds when the player clicks on cells and especially when they click on a mine. An option in the options menu, or perhaps an icon in the main play space, will allow them to disable these sounds.
 - As the player plays, they will unlock themes for the board, such as a space scene or an island, that also include ambient sound and sounds specific to that theme.
 - Rather than being presented with three choices of board size, the player can choose a custom board size (within an upper and lower bound). The game will then render an appropriately sized board dynamically.
-  - I am not sure what the upper bound might be, or if the board will scale to fit the browser window vs being scrollable if it is too much to see at once. If I allow the player to scroll they may be able to make the board ginormous without losing readability, making for some interesting challenge.
+- I am not sure what the upper bound might be, or if the board will scale to fit the browser window vs being scrollable if it is too much to see at once. If I allow the player to scroll they may be able to make the board ginormous without losing readability, making for some interesting challenge.
 
 ### User Stories
 
@@ -51,18 +51,18 @@ When finished, the game will play much the same as the classic game Minesweeper
 ### Pseudocode
 
 - Build prototype css grid for hexes
-  - code grid in css/html within a container
-  - populate with hex images with ids
-  - code js cached elements and event listener on container to bubble down to hexes
-  - check if clicking on hexes logs their id, make sure there is no overlap
+  - code grid in css/html within a container
+  - populate with hex images with ids
+  - code js cached elements and event listener on container to bubble down to hexes
+  - check if clicking on hexes logs their id, make sure there is no overlap
 - Build prototype game to test cell neighbor detection
-  - skip most UI elements
-  - hardcode a grid with set mine placement for testing
-  - code basic functions in js
-    - init
-    - checkClick
-    - checkNeighbors
-    - render
+  - skip most UI elements
+  - hardcode a grid with set mine placement for testing
+  - code basic functions in js
+    - init
+    - checkClick
+    - checkNeighbors
+    - render
 
 If all that works, I'll start coming up with next steps. No need to get ahead of myself if I can't get that jazz working.
 
