@@ -1,5 +1,3 @@
-console.log('hello!')
-
 // Constants
 // -------------------
 
@@ -17,12 +15,16 @@ console.log('hello!')
 
 // Cached Element References
 // -------------------
-
-// grid, the parant element of all the cells
+const gridAll = document.getElementById("grid")
 
 
 // Event Listeners
 // -------------------
+gridAll.addEventListener('click', function(cell){
+  console.log(cell.target.id)
+});
+
+
 
 // a listener atteched to grid, so that it can bubble down to the cells
 // new game/reset button
