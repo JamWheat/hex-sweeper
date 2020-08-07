@@ -51,10 +51,13 @@ When finished, the game will play much the same as the classic game Minesweeper
 ### Pseudocode
 
 - Build prototype css grid for hexes
-  - code grid in css/html within a container
-  - populate with hex images with ids
-  - code js cached elements and event listener on container to bubble down to hexes
-  - check if clicking on hexes logs their id, make sure there is no overlap
+  - **Done** code grid in css/html within a container
+  - **Done** populate with hex images with ids
+  - **Done** code js cached elements and event listeners on container to bubble down to hexes
+  - >Update: to more effectively be able to get ids from event clicks, I've made the hex images the *background* of the cells. This may end up having a number of benefits anyway.
+  - **Done** check if clicking on hexes logs their id, make sure there is no overlap
+  - >Update: Ah, and here is the rub. As suspected, the top left corner of each cell intrudes into the cell in that direction quite a bit, likey enough to cause significant impact to the user experience. So, new task:
+  - Experiment with round buttons in the cells to see if that reduces the overlap problem.
 - Build prototype game to test cell neighbor detection
   - skip most UI elements
   - hardcode a grid with set mine placement for testing
