@@ -50,35 +50,53 @@ When finished, the game will play much the same as the classic game Minesweeper
 
 ### Pseudocode
 
+#### Phase One - Proof of concept and core function testing
+
 - **Done** Build prototype css grid for hexes
-  - **Done** code grid in css/html within a container
-  - **Done** populate with hex images with ids
-  - **Done** code js cached elements and event listeners on container to bubble down to hexes
-  - >Update: to more effectively be able to get ids from event clicks, I've made the hex images the *background* of the cells. This may end up having a number of benefits anyway.
-  - **Done** check if clicking on hexes logs their id, make sure there is no overlap
-  - >Update: Ah, and here is the rub. As suspected, the top left corner of each cell intrudes into the cell in that direction quite a bit, likey enough to cause significant impact to the user experience. So, new task:
-  - **Done** experiment with round buttons in the cells to see if that reduces the overlap problem.
-  - > Yep, that did the trick! Round buttons that *almost* fill up the hex do not have any overlap. They don't quite get the vertices of the hexes, but that may actually be a feature, as it will avoid any ambiguity as to exactly where the player clicks. Okay, now to actually code a game...
-- Build prototype game to test cell neighbor detection
-  - skip most UI elements
-  - hardcode a grid with set mine placement for testing
-  - code basic functions in js
-    - init
-    - checkClick
-    - checkNeighbors
-    - render
+  - **Done** code grid in css/html within a container
+  - **Done** populate with hex images with ids
+  - **Done** code js cached elements and event listeners on container to bubble down to hexes
+  - >Update: to more effectively be able to get ids from event clicks, I've made the hex images the *background* of the cells. This may end up having a number of benefits anyway.
+  - **Done** check if clicking on hexes logs their id, make sure there is no overlap
+  - >Update: Ah, and here is the rub. As suspected, the top left corner of each cell intrudes into the cell in that direction quite a bit, likely enough to cause significant impact to the user experience. So, new task:
+  - **Done** experiment with round buttons in the cells to see if that reduces the overlap problem.
+  - > Yep, that did the trick! Round buttons that *almost* fill up the hex do not have any overlap. They don't quite get the vertices of the hexes, but that may actually be a feature, as it will avoid any ambiguity as to exactly where the player clicks. Okay, now to actually code a game...
+- **Done** Build prototype game to test cell neighbor detection
+  - **Done, needless to say** skip most UI elements
+  - **Done** hardcode a grid with set mine placement for testing
+  - **Done, kinda** code basic functions in js
+    - **not needed for testing** init
+    - **Done** checkClick
+    - **Done** checkAdj
+    - **not needed for testing** render
 
-If all that works, I'll start coming up with next steps. No need to get ahead of myself if I can't get that jazz working.
+#### Phase Two - Build it out into minimal game
 
-...that said, if it *does* work, future steps include, but are not limited to:
+- build the base UI
+  - remaining mine counter
+  - timer
+  - reset button
+- disable clickability after first click
+- code right click functions
+- code win and loss states and render them
+- code spreadFromEmpty functionality
+- code random mine placement
 
-- coding win and loss states and rendering them
-- coding random mine placement
-- building the UI
-- storing user information
-- making it look pretty
-- adding sounds
-- making it look pretty again and again with themes
-- coding dynamic board generation
-- allowing scalability?
+#### Phase Three - Build in fancy stuff
+
+- "soft click" functionality, graphics
+- allow the player to choose mine density
+  - effectively tweaking the random mine algorithm
+- high score table
+- store user information
+- enhance UI
+  - hide timer
+  - theme menu
+  - disable sounds
+- make it look pretty
+- make it look pretty again and again with themes
+- add sounds
+- code dynamic board generation
+- allowing scollability?
+  - grab and scoll?
 - allowing **_zoomability???_**

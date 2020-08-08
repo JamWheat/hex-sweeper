@@ -45,15 +45,24 @@ button.cellBtn{
   border-color: #333950;
   border-style: solid;
   color: #333950;
-  font-size: 2.4rem;
+  font-size: 5rem;
   background-color: #ffffff00;
 }
 
 cell {
-  background-image: url("../images/hexBevel3.png");
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+cell.unclicked {
+  background-image: url("../images/hexBevel3.png");
+
+}
+
+cell.clicked {
+  background-image: url("../images/hexFlat.png");
+
 }
 
 /* Cell X Coords */
