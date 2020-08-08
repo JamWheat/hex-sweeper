@@ -1,552 +1,641 @@
 /*------Constants--------*/
-
-
 const cellData = [
   x6y1 = {
     coord: 'x6y1',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x5y2 = {
     coord: 'x5y2',
-    hasMine: false,
+    hasMine: true,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x7y2 = {
     coord: 'x7y2',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x4y3 = {
     coord: 'x4y3',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x6y3 = {
     coord: 'x6y3',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x8y3 = {
     coord: 'x8y3',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x3y4= {
     coord: 'x3y4',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x5y4= {
     coord: 'x5y4',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x7y4 = {
     coord: 'x7y4',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x9y4 = {
     coord: 'x9y4',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x2y5 = {
     coord: 'x2y5',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x4y5 = {
     coord: 'x4y5',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x6y5 = {
     coord: 'x6y5',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x8y5 = {
     coord: 'x8y5',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x10y5 = {
     coord: 'x10y5',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x1y6 = {
     coord: 'x1y6',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x3y6 = {
     coord: 'x3y6',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x5y6 = {
     coord: 'x5y6',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x7y6 = {
     coord: 'x7y6',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x9y6 = {
     coord: 'x9y6',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x11y6 = {
     coord: 'x11y6',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x2y7 = {
     coord: 'x2y7',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x4y7 = {
     coord: 'x4y7',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x6y7 = {
     coord: 'x6y7',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x8y7 = {
     coord: 'x8y7',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x10y7 = {
     coord: 'x10y7',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x1y8 = {
    coord: 'x1y8',
    hasMine: false,
    beenClicked: false,
-   adjMines: null
+   adjMines: null,
+   flag: 'none'
   },
   x3y8 = {
     coord: 'x3y8',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x5y8 = {
     coord: 'x5y8',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x7y8 = {
     coord: 'x7y8',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x9y8 = {
     coord: 'x9y8',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x11y8 = {
     coord: 'x11y8',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x2y9 = {
     coord: 'x2y9',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x4y9 = {
     coord: 'x4y9',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x8y9 = {
     coord: 'x8y9',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x9y9= {
     coord: 'x9y9',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x11y9 = {
     coord: 'x11y9',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x1y10 = {
     coord: 'x1y10',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x3y10 = {
     coord: 'x3y10',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x5y10 = {
     coord: 'x5y10',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x7y10 = {
     coord: 'x7y10',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x9y10 = {
     coord: 'x9y10',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x11y10 = {
     coord: 'x11y10',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x2y11 = {
     coord: 'x2y11',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x4y11 = {
     coord: 'x4y11',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x6y11 = {
     coord: 'x6y11',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x8y11 = {
     coord: 'x8y11',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x10y11 = {
     coord: 'x10y11',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x1y12 = {
     coord: 'x1y12',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x3y12 = {
     coord: 'x3y12',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x5y12 = {
     coord: 'x5y12',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x7y12 = {
     coord: 'x7y12',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x9y12= {
     coord: 'x9y12',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x11y12= {
     coord: 'x11y12',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x2y13 = {
     coord: 'x2y13',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x4y13 = {
     coord: 'x4y13',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x6y13 = {
     coord: 'x6y13',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x8y13 = {
     coord: 'x8y13',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x10y13 = {
     coord: 'x10y13',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x1y14 = {
     coord: 'x1y14',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x3y14 = {
     coord: 'x3y14',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x5y14 = {
     coord: 'x5y14',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x7y14 = {
     coord: 'x7y14',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x9y14 = {
     coord: 'x9y14',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x11y14 = {
     coord: 'x11y14',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
     x2y15 = {
     coord: 'x2y15',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
     x4y15 = {
     coord: 'x4y15',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x6y15 = {
     coord: 'x6y15',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x8y16 = {
     coord: 'x8y16',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x10y17 = {
     coord: 'x10y17',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x1y16 = {
     coord: 'x1y16',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x3y16 = {
     coord: 'x3y16',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x5y16 = {
     coord: 'x5y16',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x7y16 = {
     coord: 'x7y16',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x9y16 = {
     coord: 'x9y16',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x11y16 = {
     coord: 'x11y16',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x2y17 = {
     coord: 'x2y17',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x4y17 = {
     coord: 'x4y17',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x6y17 = {
     coord: 'x6y17',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x8y17 = {
     coord: 'x8y17',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x10y17 = {
     coord: 'x10y17',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x3y18 = {
     coord: 'x3y18',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x5y18 = {
     coord: 'x5y18',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x7y18 = {
     coord: 'x7y18',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x9y18 = {
     coord: 'x9y18',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x4y19 = {
     coord: 'x4y19',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x6y19 = {
     coord: 'x6y19',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x8y19 = {
     coord: 'x8y19',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x5y20 = {
     coord: 'x5y20',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x7y20 = {
     coord: 'x7y20',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   },
   x6y21 = {
     coord: 'x6y21',
     hasMine: false,
     beenClicked: false,
-    adjMines: null
+    adjMines: null,
+    flag: 'none'
   }
 ]
 const checkAdjMath = [
@@ -565,7 +654,7 @@ const checkAdjMath = [
   // an array of player options for the game to check back on when needed. for example, index 5 could be eight a 0 or a 1, representing if the player wants to view the timer. render would then check this value
 
 /*------Variables--------*/
-
+let gameOver
 
 
 /*------Cached Element References--------*/
@@ -577,20 +666,29 @@ const gridAll = document.getElementById("grid")
 
 /*------Event Listeners--------*/
 gridAll.addEventListener('click', function(clicked){
-  // checkMine(clicked.target.id)
+  if(!gameOver){
   checkMine(clicked)
-  // console.log(clicked.target.parentElement)
+  }
 });
+gridAll.addEventListener('contextmenu', function(clicked){
+  clicked.preventDefault()
+  flagMine(clicked)
+})
 // new game/reset button
 // pause
 // options
 
 /*------Functions--------*/
+init()
+
+function init(){
+  gameOver = false
+}
+
 function findCell(input){
   let output = cellData.find((arr) => arr.coord === input.target.id)
   return output
 }
-
 
 function checkMine(clicked){
   let cell = findCell(clicked)
@@ -617,97 +715,61 @@ function listAdjCells(cell){
       adjCells.push(them)
     }
   }
-  console.log(adjCells)
+  return adjCells
 }
 
 function checkAdj(clicked){
   let cell = findCell(clicked)
-  if (!cell.beenClicked){
-    let whereY = cell.coord.indexOf('y')
-    let myX = parseInt(cell.coord.substring(1, whereY))
-    let myY = parseInt(cell.coord.substring((whereY+1)))
-
-    //This part generates the coords of the cells around cell
-    //push values to array?
-    for(let i = 0; i < 6; i++){
-      let plainX, plainY
-      let theirX = myX + checkAdjMath[i][0]
-      let theirY = myY + checkAdjMath[i][1]
-      let theirCoords = `x${theirX}y${theirY}`
-      let them = cellData.find((arr) => arr.coord === theirCoords)
-      // to here
-
-      //this part ++ adjMines
-      //check value in generated array?
-      if (typeof(them) !== 'undefined'){
-        if (them.hasMine) {
-          cell.adjMines++
-        }
+  if (cell.beenClicked === false && cell.flag === 'none'){
+    let adjCells = listAdjCells(cell)
+    adjCells.forEach(function(arr){
+      if (arr.hasMine){
+        cell.adjMines++
       }
-
-      
-    }
-    if (cell.adjMines > 0) {
-      clicked.target.innerText = `${cell.adjMines}`
-    }
-    cell.beenClicked = true
-    clicked.target.parentElement.classList.remove('unclicked')
-    clicked.target.parentElement.classList.add('clicked')
+      if (cell.adjMines > 0) {
+        clicked.target.innerText = `${cell.adjMines}`
+      }
+      cell.beenClicked = true
+      clicked.target.parentElement.classList.remove('unclicked')
+      clicked.target.parentElement.classList.add('clicked')
+    })       
   }
 }
 
+function flagMine(clicked){
+  let cell = findCell(clicked)
+  if (!cell.beenClicked) {
+    if (cell.flag === 'none'){
+      cell.flag = 'flag'
+      clicked.target.parentElement.classList.remove('unclicked')
+      clicked.target.parentElement.classList.add('flag')
+    } else if (cell.flag === 'flag') {
+      cell.flag = 'maybeFlag'
+      clicked.target.parentElement.classList.remove('flag')
+      clicked.target.parentElement.classList.add('maybeFlag')
+    } else {
+      cell.flag = 'none'
+      clicked.target.parentElement.classList.remove('maybeFlag')
+      clicked.target.parentElement.classList.add('unclicked')
+    }
+  }
+}
 
-// function checkAdj(clicked){
-//   let cell = findCell(clicked)
-//   if (!cell.beenClicked){
-//     let myX = parseInt(cell.coord.substring(1, 4))
-//     let myY = parseInt(cell.coord.substring(5))
+/*-----TO DO---------
 
-//     //This part generates the coords of the cells around cell
-//     //push values to array?
-//     for(let i = 0; i < 6; i++){
-//       let plainX, plainY
-//       let theirX = myX + checkAdjMath[i][0]
-//       let theirY = myY + checkAdjMath[i][1]
-//       if (theirX < 10){
-//         plainX = `00${theirX}`
-//       } else if (theirX < 100) {
-//         plainX = `0${theirX}`
-//       } else {
-//         plainX = `${theirX}`
-//       }
-//       if (theirY < 10){
-//         plainY = `00${theirY}`
-//       } else if (theirY < 100) {
-//         plainY = `0${theirY}`
-//       } else {
-//         plainY = `${theirY}`
-//       }
-//       let theirCoords = `x${plainX}y${plainY}`
-//       let them = cellData.find((arr) => arr.coord === theirCoords)
-//       // to here
-
-//       //this part ++ adjMines
-//       //check valie in generated array?
-//       if (typeof(them) !== 'undefined'){
-//         if (them.hasMine) {
-//           cell.adjMines++
-//         }
-//       }
-
-      
-//     }
-//     if (cell.adjMines > 0) {
-//       clicked.target.innerText = `${cell.adjMines}`
-//     }
-//     cell.beenClicked = true
-//     clicked.target.parentElement.classList.remove('unclicked')
-//     clicked.target.parentElement.classList.add('clicked')
-//   }
-// }
+// Bare Minimum
+  // Right click funtion
+  // Timer
+  // Mine Couter
+  // Random Mine Placement (okay if it is shitty)
+  // check win (lose if obviously if they click on a mine)
 
 
+// Ideal to get done
+  // 
 
+
+--------------------------*/
 // init
   // funtions to engage and reset the game
   // sets reset/new game to reset

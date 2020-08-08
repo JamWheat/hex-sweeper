@@ -29,10 +29,7 @@ container {
 
 #grid {
   display: grid;
-  /* comment             1    2 3       4 5       6 7      8 9      10 11     12 13     14 15     16 17      18 19     20 21     22                      */
-  /* comment             |    | |       | |       | |      | |       | |       | |       | |       | |        | |       | |      |                     */
-  grid-template-columns: 43px 15px 28px 15px 28px 15px 28px 15px 28px 15px 28px 15px 28px 15px 28px 15px 28px 15px 28px  15px 43px;
-  /* grid-template-columns: repeat(21, auto); */
+  grid-template-columns: 43px 15px 28px 15px 28px 15px 28px 15px 28px 15px 28px 15px 28px 15px 28px 15px 28px 15px 28px 15px 43px;
   grid-template-rows: repeat(20, auto);
 }
 
@@ -48,7 +45,8 @@ button.cellBtn{
   border-color: #333950;
   border-style: solid;
   color: #333950;
-  font-size: 2.4rem;
+  font-size: 1.6rem;
+  font-weight: bold;
   background-color: #ffffff00;
 }
 
@@ -60,12 +58,18 @@ cell {
 
 cell.unclicked {
   background-image: url("../images/hexBevelS.png");
-
 }
 
 cell.clicked {
   background-image: url("../images/hexFlatS.png");
+}
 
+cell.flag {
+  background-image: url("../images/hexFlagS.png");
+}
+
+cell.maybeFlag {
+  background-image: url("../images/hexMaybeFlagS.png");
 }
 
 /* Cell X Coords */

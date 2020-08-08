@@ -76,14 +76,14 @@ When finished, the game will play much the same as the classic game Minesweeper
   - remaining mine counter
   - timer
   - reset button
-- disable clickability after first click
-- code right click functions
+- **Done** disable clickability after first click
+- **Done** code right click functions
 - code win and loss states and render them
-- code spreadFromEmpty functionality
 - code random mine placement
 
 #### Phase Three - Build in fancy stuff
 
+- code spreadFromEmpty functionality
 - "soft click" functionality, graphics
 - middle mouse button or click on a numbered cell to reviel all adjence unflagged, uncliced cells.
 - allow the player to choose mine density
