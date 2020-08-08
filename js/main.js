@@ -1,38 +1,154 @@
-// Constants
-// -------------------
+/*------Constants--------*/
 
-// cellData = []
-  // an array of arrays, each sub-array storing data about each cell (x coord, y coord, if it has a bomb, if it has been clicked, and adjacent bombs)
+
+const cellData = [
+  x003y001 = {
+    coord: 'x003y001',
+    hasBomb: true,
+    beenClicked: false,
+    adjMines: null
+  },
+  x002y002 = {
+    coord: 'x002y002',
+    hasBomb: false,
+    beenClicked: false,
+    adjMines: null
+  },
+  x004y002 = {
+    coord: 'x004y002',
+    hasBomb: false,
+    beenClicked: false,
+    adjMines: null
+  },
+  x001y003 = {
+    coord: 'x001y003',
+    hasBomb: true,
+    beenClicked: false,
+    adjMines: null
+  },
+  x003y003 = {
+    coord: 'x003y003',
+    hasBomb: false,
+    beenClicked: false,
+    adjMines: null
+  },
+  x005y003 = {
+    coord: 'x005y003',
+    hasBomb: false,
+    beenClicked: false,
+    adjMines: null
+  },
+  x002y004 = {
+    coord: 'x002y004',
+    hasBomb: true,
+    beenClicked: false,
+    adjMines: null
+  },
+  x004y004 = {
+    coord: 'x004y004',
+    hasBomb: true,
+    beenClicked: false,
+    adjMines: null
+  },
+  x001y005 = {
+    coord: 'x001y005',
+    hasBomb: false,
+    beenClicked: false,
+    adjMines: null
+  },
+  x003y005 = {
+    coord: 'x003y005',
+    hasBomb: false,
+    beenClicked: false,
+    adjMines: null
+  },
+  x005y005 = {
+    coord: 'x005y005',
+    hasBomb: false,
+    beenClicked: false,
+    adjMines: null
+  },
+  x002y006 = {
+    coord: 'x002y006',
+    hasBomb: true,
+    beenClicked: false,
+    adjMines: null
+  },
+  x004y006 = {
+    coord: 'x004y006',
+    hasBomb: true,
+    beenClicked: false,
+    adjMines: null
+  },
+  x001y007 = {
+    coord: 'x001y007',
+    hasBomb: true,
+    beenClicked: false,
+    adjMines: null
+  },
+  x003y007 = {
+    coord: 'x003y007',
+    hasBomb: true,
+    beenClicked: false,
+    adjMines: null
+  },
+  x005y007 = {
+    coord: 'x005y007',
+    hasBomb: false,
+    beenClicked: false,
+    adjMines: null
+  },
+  x002y008 = {
+    coord: 'x002y008',
+    hasBomb: false,
+    beenClicked: false,
+    adjMines: null
+  },
+  x004y008 = {
+    coord: 'x004y008',
+    hasBomb: false,
+    beenClicked: false,
+    adjMines: null
+  },
+  x003y009 = {
+    coord: 'x003y009',
+    hasBomb: false,
+    beenClicked: false,
+    adjMines: null
+  }
+]
+
 // playerInfo = {}
   // an object that stores player info, such as name, previous scores, and wins
 // options = []
   // an array of player options for the game to check back on when needed. for example, index 5 could be eight a 0 or a 1, representing if the player wants to view the timer. render would then check this value
 
-// Variables
-// -------------------
+/*------Variables--------*/
+ let cell
 
 
-
-// Cached Element References
-// -------------------
+/*------Cached Element References--------*/
 const gridAll = document.getElementById("grid")
+//Timer readout
+//reset button
+//pause button
+//options
 
-
-// Event Listeners
-// -------------------
-gridAll.addEventListener('click', function(cell){
-  console.log(cell.target.id)
+/*------Event Listeners--------*/
+gridAll.addEventListener('click', function(clicked){
+  checkBomb(clicked.target.id)
 });
-
-
-
-// a listener atteched to grid, so that it can bubble down to the cells
 // new game/reset button
 // pause
 // options
 
-// Functions
-// -------------------
+/*------Functions--------*/
+function checkBomb(cell){
+  let check = cellData.find((arr) => arr.coord === cell)
+  console.log(check.hasBomb)
+}
+
+
 
 // init
   // funtions to engage and reset the game
