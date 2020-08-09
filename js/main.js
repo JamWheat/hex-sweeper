@@ -476,15 +476,15 @@ const cellData = [
     adjMines: null,
     flag: 'none'
   },
-  x8y16 = {
-    coord: 'x8y16',
+  x8y15 = {
+    coord: 'x8y15',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x10y17 = {
-    coord: 'x10y17',
+  x10y15 = {
+    coord: 'x10y15',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
@@ -718,8 +718,15 @@ init()
 function init(){
   readOut.innerText = ''
   gameOver = false
-  //reset cells and place mines, updateing minesLeft
-
+  //place random mines
+  cellData.forEach(function(obj){
+    obj.flag = 'none'
+    obj.hasMine = false
+    obj.beenClicked = false
+    obj.adjMines = null
+  })
+  //run through and update adjMines now, rather than indevilually on click?
+  render()
 }
 
 function checkMine(clicked){
@@ -745,10 +752,9 @@ function checkAdj(clicked){
         clicked.target.innerText = `${cell.adjMines}`
       }
       cell.beenClicked = true
-      clicked.target.parentElement.classList.remove('unclicked')
-      clicked.target.parentElement.classList.add('clicked')
     })       
   }
+  render()
 }
 
 function flagMine(clicked){
@@ -776,7 +782,28 @@ function render(){
     // mine total does not change
   //display mines left
   //update timer?
+  //run through cellData and update mine graphics
+    // forEach though mine data is easy
+    // how to write to correct cell in HTML? based on the coords key?
+  cellData.forEach(function(obj){
+    //leave flag rendering in flag funtion?
+    if (obj.beenClicked === true){
+      document.getElementById(`${obj.coord}`).parentElement.classList.remove('unclicked')
+      document.getElementById(`${obj.coord}`).parentElement.classList.add('clicked')
+    } else {
+      document.getElementById(`${obj.coord}`).parentElement.classList.remove('clicked')
+      document.getElementById(`${obj.coord}`).parentElement.classList.add('unclicked')
+    }
+    //check been clicked, render accordingly
+      // hexFlat, write adjMines to html
+  })
 }
+
+
+
+// beenClicked: false,
+// adjMines: null,
+// flag: 'none'
 
 /*-----TO DO---------
 
