@@ -238,22 +238,22 @@ const cellData = [
     adjMines: null,
     flag: 'none'
   },
-  x8y9 = {
+  x6y9 = {
+    coord: 'x6y9',
+    hasMine: false,
+    beenClicked: false,
+    adjMines: null,
+    flag: 'none'
+  },
+  x8y9= {
     coord: 'x8y9',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x9y9= {
-    coord: 'x9y9',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  x11y9 = {
-    coord: 'x11y9',
+  x10y9 = {
+    coord: 'x10y9',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
@@ -654,7 +654,7 @@ const checkAdjMath = [
   // an array of player options for the game to check back on when needed. for example, index 5 could be eight a 0 or a 1, representing if the player wants to view the timer. render would then check this value
 
 /*------Variables--------*/
-let gameOver, mineTotal
+let gameOver, mineTotal, started
 
 
 /*------Cached Element References--------*/
@@ -716,15 +716,26 @@ function listAdjCells(cell){
 init()
 
 function init(){
+  started = false
   readOut.innerText = ''
+  mineTotal = 'waiting...'
   gameOver = false
-  //place random mines
   cellData.forEach(function(obj){
     obj.flag = 'none'
     obj.hasMine = false
     obj.beenClicked = false
-    obj.adjMines = null
+    obj.adjMines = 0
+    document.getElementById(`${obj.coord}`).innerText = ``
   })
+  //run through and update adjMines now, rather than indevilually on click?
+  render()
+}
+
+function firstClick(clicked){
+  //log coords of cell clicked
+  //place mines, skipping cell clicked
+  //calculate total mines, write to variabl
+
   //run through and update adjMines now, rather than indevilually on click?
   render()
 }
@@ -748,6 +759,7 @@ function checkAdj(clicked){
       if (arr.hasMine){
         cell.adjMines++
       }
+      // move to render
       if (cell.adjMines > 0) {
         clicked.target.innerText = `${cell.adjMines}`
       }
@@ -762,40 +774,37 @@ function flagMine(clicked){
   if (!cell.beenClicked) {
     if (cell.flag === 'none'){
       cell.flag = 'flag'
-      clicked.target.parentElement.classList.remove('unclicked')
-      clicked.target.parentElement.classList.add('flag')
     } else if (cell.flag === 'flag') {
       cell.flag = 'maybeFlag'
-      clicked.target.parentElement.classList.remove('flag')
-      clicked.target.parentElement.classList.add('maybeFlag')
     } else {
       cell.flag = 'none'
-      clicked.target.parentElement.classList.remove('maybeFlag')
-      clicked.target.parentElement.classList.add('unclicked')
     }
   }
+  render()
 }
 
 function render(){
-  //update mines left
-    // forEach cellData, add up flag: 'flag', subtract from mine total
-    // mine total does not change
-  //display mines left
-  //update timer?
-  //run through cellData and update mine graphics
-    // forEach though mine data is easy
-    // how to write to correct cell in HTML? based on the coords key?
+  let flagTotal = 0
   cellData.forEach(function(obj){
-    //leave flag rendering in flag funtion?
-    if (obj.beenClicked === true){
-      document.getElementById(`${obj.coord}`).parentElement.classList.remove('unclicked')
-      document.getElementById(`${obj.coord}`).parentElement.classList.add('clicked')
-    } else {
-      document.getElementById(`${obj.coord}`).parentElement.classList.remove('clicked')
-      document.getElementById(`${obj.coord}`).parentElement.classList.add('unclicked')
+    if (obj.flag === 'flag'){
+      flagTotal++
     }
-    //check been clicked, render accordingly
-      // hexFlat, write adjMines to html
+  })
+  mineCounter.innerText = `Mines Left: ${mineTotal}`
+  //update timer?
+  cellData.forEach(function(obj){
+    if (obj.beenClicked === false){
+      if (obj.flag === 'flag') {
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlagS.png")'
+      } else if (obj.flag === 'maybeFlag'){
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMaybeFlagS.png")'
+      } else {
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexBevelS.png")'
+      }
+    } else {
+      document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlatS.png")'
+      document.getElementById(`${obj.coord}`).innerText = `${obj.adjMines}`
+    }
   })
 }
 

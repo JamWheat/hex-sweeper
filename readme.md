@@ -72,14 +72,16 @@ When finished, the game will play much the same as the classic game Minesweeper
 
 #### Phase Two - Build it out into minimal game
 
-- build the base UI
-  - remaining mine counter
-  - timer
-  - reset button
+- **done** build the base UI
+  - **done**remaining mine counter
+  - **done** timer
+  - **Done** reset button
 - **Done** disable clickability after first click
 - **Done** code right click functions
-- code win and loss states and render them
 - code random mine placement
+- code timer
+- code win and loss states and render them
+- popup window for game start and end
 
 #### Phase Three - Build in fancy stuff
 
