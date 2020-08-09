@@ -780,7 +780,11 @@ function firstClick(clicked){
 
 function checkMine(clicked){
   let cell = findCell(clicked)
-  if (cell.hasMine) {
+  if (cell.hasMine === true) {
+    if (cell.flag !== 'none'){
+      return
+    }
+    console.log(cell.hasMine, cell.flag)
     readOut.innerText = 'BOOOM! You lose!'
     cellData.forEach(function(obj){
       if (obj.hasMine === true) {
@@ -789,6 +793,7 @@ function checkMine(clicked){
     })
     clearInterval(timerInterval)
     gameOver = true
+    render(cell.coord)
   } else {
     checkWin(clicked)
   }
@@ -810,7 +815,6 @@ function checkWin(clicked){
     clearInterval(timerInterval)
     winner = true
   }
-  console.log(cellData.length - (flagTotal + clickedTotal))
   render()
 }
 
@@ -830,17 +834,12 @@ function flagMine(clicked){
   render()
 }
 
-function render(){
+function render(cell){
   if (winner){
+    gameOver = true
     readOut.innerText = "You win!"
   }
   timer.innerText = seconds
-  // let flagTotal = 0
-  // cellData.forEach(function(obj){
-  //   if (obj.flag === 'flag'){
-  //     flagTotal++
-  //   }
-  // })
   if (!started) {
     mineCounter.innerText = `Click a cell to start!`
     timer.innerText = '000'
@@ -869,9 +868,24 @@ function render(){
         document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexBevelS2.png")'
       }
     } else {
-      document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlatS2.png")'
+      document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlatS3.png")'
       if (obj.adjMines > 0) {
         document.getElementById(`${obj.coord}`).innerText = `${obj.adjMines}`
+      }
+    }
+    //new code
+    if (gameOver === true && winner === false){
+      if (obj.hasMine) {
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMineS.png")'
+      }
+      if (obj.flag === 'flag' && obj.hasMine === false) {
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlagNotMine.png")'
+      }
+      if (obj.flag === 'flag' && obj.hasMine === true) {
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMineFlag.png")'
+      }
+      if (obj.coord === cell) {
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMineExploded.png")'
       }
     }
     //for debugging
