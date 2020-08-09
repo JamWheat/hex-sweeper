@@ -9,7 +9,7 @@ const cellData = [
   },
   x5y2 = {
     coord: 'x5y2',
-    hasMine: true,
+    hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
@@ -654,50 +654,43 @@ const checkAdjMath = [
   // an array of player options for the game to check back on when needed. for example, index 5 could be eight a 0 or a 1, representing if the player wants to view the timer. render would then check this value
 
 /*------Variables--------*/
-let gameOver
+let gameOver, mineTotal
 
 
 /*------Cached Element References--------*/
 const gridAll = document.getElementById("grid")
-//Timer readout
-//reset button
+//For basic testing
+const readOut = document.getElementById("readOut")
+const timer = document.getElementById("timer")
+const mineCounter = document.getElementById('mine-counter')
+const resetBtn = document.getElementById('reset-button')
 //pause button
 //options
 
 /*------Event Listeners--------*/
 gridAll.addEventListener('click', function(clicked){
   if(!gameOver){
-  checkMine(clicked)
+    checkMine(clicked)
   }
 });
 gridAll.addEventListener('contextmenu', function(clicked){
-  clicked.preventDefault()
-  flagMine(clicked)
+  if (!gameOver){
+    clicked.preventDefault()
+    flagMine(clicked)
+  }
 })
-// new game/reset button
+resetBtn.addEventListener('click', () => init())
 // pause
 // options
 
 /*------Functions--------*/
-init()
+// Tools
 
-function init(){
-  gameOver = false
-}
+rando = (arg) => (Math.random() > arg) ? 1 : 0;
 
 function findCell(input){
   let output = cellData.find((arr) => arr.coord === input.target.id)
   return output
-}
-
-function checkMine(clicked){
-  let cell = findCell(clicked)
-  // let find = cellData.find((arr) => arr.coord === clicked.target.id)
-  if (cell.hasMine) {
-    console.log('Booom!')
-  } else {
-    checkAdj(clicked)
-  }
 }
 
 function listAdjCells(cell){
@@ -716,6 +709,28 @@ function listAdjCells(cell){
     }
   }
   return adjCells
+}
+
+// Gameplay
+
+init()
+
+function init(){
+  readOut.innerText = ''
+  gameOver = false
+  //reset cells and place mines, updateing minesLeft
+
+}
+
+function checkMine(clicked){
+  let cell = findCell(clicked)
+  // let find = cellData.find((arr) => arr.coord === clicked.target.id)
+  if (cell.hasMine) {
+    readOut.innerText = 'BOOOM!'
+    gameOver = true
+  } else {
+    checkAdj(clicked)
+  }
 }
 
 function checkAdj(clicked){
@@ -755,18 +770,25 @@ function flagMine(clicked){
   }
 }
 
+function render(){
+  //update mines left
+    // forEach cellData, add up flag: 'flag', subtract from mine total
+    // mine total does not change
+  //display mines left
+  //update timer?
+}
+
 /*-----TO DO---------
 
 // Bare Minimum
-  // Right click funtion
-  // Timer
-  // Mine Couter
   // Random Mine Placement (okay if it is shitty)
+  // Timer
   // check win (lose if obviously if they click on a mine)
+    // mine ticker at zero + all unflagged cells clicked = win
 
 
 // Ideal to get done
-  // 
+  // Procedural boards
 
 
 --------------------------*/

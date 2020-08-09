@@ -10,6 +10,11 @@
 <body>
   <container>
     <h1>Hex Sweeper</h1>
+    <header>
+      <div id="mine-counter"></div>
+      <div id="readOut"></div>
+      <div id="timer">0:00</div>
+    </header>
     <grid id="grid">
       <cell class='x06 y01 unclicked'><button class="cellBtn" id="x6y1"></button></cell>
 
@@ -123,6 +128,8 @@
 
       <cell class='x06 y21 unclicked'><button class="cellBtn" id="x6y21"></button></cell>
     </grid>
+    <br>
+    <button id="reset-button">Reset</button>
   </container>
 </body>
 </html>
