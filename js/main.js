@@ -784,13 +784,6 @@ function checkMine(clicked){
     if (cell.flag !== 'none'){
       return
     }
-    console.log(cell.hasMine, cell.flag)
-    readOut.innerText = 'BOOOM! You lose!'
-    cellData.forEach(function(obj){
-      if (obj.hasMine === true) {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMineS.png")'
-      }
-    })
     clearInterval(timerInterval)
     gameOver = true
     render(cell.coord)
@@ -861,22 +854,22 @@ function render(cell){
   cellData.forEach(function(obj){
     if (obj.beenClicked === false){
       if (obj.flag === 'flag') {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlagS2.png")'
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlag.png")'
       } else if (obj.flag === 'maybeFlag'){
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMaybeFlagS2.png")'
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMaybeFlag.png")'
       } else {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexBevelS2.png")'
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexBevel.png")'
       }
     } else {
-      document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlatS3.png")'
+      document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlat.png")'
       if (obj.adjMines > 0) {
         document.getElementById(`${obj.coord}`).innerText = `${obj.adjMines}`
       }
     }
-    //new code
     if (gameOver === true && winner === false){
+      readOut.innerText = 'BOOOM! You lose!'
       if (obj.hasMine) {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMineS.png")'
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMine.png")'
       }
       if (obj.flag === 'flag' && obj.hasMine === false) {
         document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlagNotMine.png")'
