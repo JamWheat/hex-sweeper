@@ -73,7 +73,7 @@ When finished, the game will play much the same as the classic game Minesweeper
 #### Phase Two - Build it out into minimal game
 
 - **done** build the base UI
-  - **done**remaining mine counter
+  - **done** remaining mine counter
   - **done** timer
   - **Done** reset button
 - **Done** disable clickability after first click
@@ -85,9 +85,12 @@ When finished, the game will play much the same as the classic game Minesweeper
 
 #### Phase Three - Build in fancy stuff
 
+> Turns out building pre-build boards in a hex grid is a huge pain in the ass (at least the way I have my hex grid). Even a "small" board six hexes to a side has nearly 100 cells, ripe for bugs in the building and game execution. I truly think making the procedural board generation will be easier than making bigger boards by hand, so I am bumping that up the priority list. Plus, once that's done, the game can still have "preset" boards, they will just run through the generation function same as a "custom" board.
+
+- code dynamic board generation
 - code spreadFromEmpty functionality
 - "soft click" functionality, graphics
-- middle mouse button or click on a numbered cell to reviel all adjence unflagged, uncliced cells.
+- middle mouse button or click on a numbered cell to reveal all adjacent unflagged, unclicked cells (whether they have mines or not)
 - allow the player to choose mine density
   - effectively tweaking the random mine algorithm
 - high score table
@@ -99,7 +102,6 @@ When finished, the game will play much the same as the classic game Minesweeper
 - make it look pretty
 - make it look pretty again and again with themes
 - add sounds
-- code dynamic board generation
 - allowing scollability?
   - grab and scoll?
 - allowing **_zoomability???_**

@@ -670,11 +670,16 @@ const resetBtn = document.getElementById('reset-button')
 /*------Event Listeners--------*/
 gridAll.addEventListener('click', function(clicked){
   if(!gameOver){
+    if (!started) {
+      firstClick(clicked)
+    } else {
     checkMine(clicked)
+    }
   }
 });
 gridAll.addEventListener('contextmenu', function(clicked){
   if (!gameOver){
+    // check for game started
     clicked.preventDefault()
     flagMine(clicked)
   }
@@ -686,7 +691,7 @@ resetBtn.addEventListener('click', () => init())
 /*------Functions--------*/
 // Tools
 
-rando = (arg) => (Math.random() > arg) ? 1 : 0;
+rando = (arg) => (Math.random() < arg) ? 1 : 0;
 
 function findCell(input){
   let output = cellData.find((arr) => arr.coord === input.target.id)
@@ -699,7 +704,6 @@ function listAdjCells(cell){
   let myY = parseInt(cell.coord.substring((whereY+1)))
   let adjCells = []
   for(let i = 0; i < 6; i++){
-    let plainX, plainY
     let theirX = myX + checkAdjMath[i][0]
     let theirY = myY + checkAdjMath[i][1]
     let theirCoords = `x${theirX}y${theirY}`
@@ -732,17 +736,31 @@ function init(){
 }
 
 function firstClick(clicked){
-  //log coords of cell clicked
-  //place mines, skipping cell clicked
-  //calculate total mines, write to variabl
+  let cell = findCell(clicked)
+  let randFactor = .1
+  mineTotal = 0
+  cellData.forEach(function(obj){
+    if (obj.coord === cell.coord){
+      // skips cell clicked
+    } else {
+      if (rando(randFactor) === 1) {
+        obj.hasMine = true
+        randFactor = .1
+        mineTotal++
+      } else {
+        randFactor = randFactor + .1
+      }
+    }
+  })
 
-  //run through and update adjMines now, rather than indevilually on click?
+  //run through and update adjMines
+   cell.beenClicked = true
+  started = true
   render()
 }
 
 function checkMine(clicked){
   let cell = findCell(clicked)
-  // let find = cellData.find((arr) => arr.coord === clicked.target.id)
   if (cell.hasMine) {
     readOut.innerText = 'BOOOM!'
     gameOver = true
@@ -758,10 +776,6 @@ function checkAdj(clicked){
     adjCells.forEach(function(arr){
       if (arr.hasMine){
         cell.adjMines++
-      }
-      // move to render
-      if (cell.adjMines > 0) {
-        clicked.target.innerText = `${cell.adjMines}`
       }
       cell.beenClicked = true
     })       
@@ -790,7 +804,7 @@ function render(){
       flagTotal++
     }
   })
-  mineCounter.innerText = `Mines Left: ${mineTotal}`
+  mineCounter.innerText = `Mines Left: ${mineTotal - flagTotal}`
   //update timer?
   cellData.forEach(function(obj){
     if (obj.beenClicked === false){
@@ -803,7 +817,13 @@ function render(){
       }
     } else {
       document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlatS.png")'
-      document.getElementById(`${obj.coord}`).innerText = `${obj.adjMines}`
+      if (obj.adjMines > 0) {
+        document.getElementById(`${obj.coord}`).innerText = `${obj.adjMines}`
+      }
+    }
+    //for debugging
+    if (obj.hasMine === true) {
+      document.getElementById(`${obj.coord}`).innerText = `X`
     }
   })
 }
