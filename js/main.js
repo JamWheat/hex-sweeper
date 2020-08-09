@@ -654,7 +654,7 @@ const checkAdjMath = [
   // an array of player options for the game to check back on when needed. for example, index 5 could be eight a 0 or a 1, representing if the player wants to view the timer. render would then check this value
 
 /*------Variables--------*/
-let gameOver, mineTotal, started, timerInterval, seconds
+let gameOver, mineTotal, started, timerInterval, seconds, flagTotal, winner
 
 
 /*------Cached Element References--------*/
@@ -689,8 +689,8 @@ resetBtn.addEventListener('click', () => init())
 // pause
 // options
 
-/*------Functions--------*/
-// Tools
+/*------Tool Functions--------*/
+
 
 function tick(){
   seconds++
@@ -726,16 +726,17 @@ function listAdjCells(cell){
   return adjCells
 }
 
-// Gameplay
+/*------Gameplay Functions--------*/
 
 init()
 
 function init(){
+  winner = false
   seconds = 0
+  flagTotal = 0
   clearInterval(timerInterval)
   started = false
   readOut.innerText = ''
-  mineTotal = 'waiting...'
   gameOver = false
   cellData.forEach(function(obj){
     obj.flag = 'none'
@@ -780,7 +781,7 @@ function firstClick(clicked){
 function checkMine(clicked){
   let cell = findCell(clicked)
   if (cell.hasMine) {
-    readOut.innerText = 'BOOOM!'
+    readOut.innerText = 'BOOOM! You lose!'
     cellData.forEach(function(obj){
       if (obj.hasMine === true) {
         document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMineS.png")'
@@ -798,6 +799,18 @@ function checkWin(clicked){
   if (cell.beenClicked === false && cell.flag === 'none'){
     cell.beenClicked = true
   }
+  let clickedTotal = 0 
+  cellData.forEach(function(obj){
+    if (obj.beenClicked === true){
+      clickedTotal++
+    }
+  })
+  if (flagTotal + clickedTotal === cellData.length){
+
+    clearInterval(timerInterval)
+    winner = true
+  }
+  console.log(cellData.length - (flagTotal + clickedTotal))
   render()
 }
 
@@ -806,8 +819,10 @@ function flagMine(clicked){
   if (!cell.beenClicked) {
     if (cell.flag === 'none'){
       cell.flag = 'flag'
+      flagTotal++
     } else if (cell.flag === 'flag') {
       cell.flag = 'maybeFlag'
+      flagTotal--
     } else {
       cell.flag = 'none'
     }
@@ -816,15 +831,18 @@ function flagMine(clicked){
 }
 
 function render(){
+  if (winner){
+    readOut.innerText = "You win!"
+  }
   timer.innerText = seconds
-  let flagTotal = 0
-  cellData.forEach(function(obj){
-    if (obj.flag === 'flag'){
-      flagTotal++
-    }
-  })
+  // let flagTotal = 0
+  // cellData.forEach(function(obj){
+  //   if (obj.flag === 'flag'){
+  //     flagTotal++
+  //   }
+  // })
   if (!started) {
-    mineCounter.innerText = `Click a cell to Start!`
+    mineCounter.innerText = `Click a cell to start!`
     timer.innerText = '000'
   } else {
     mineCounter.innerText = `Mines Left: ${mineTotal - flagTotal}`
@@ -869,9 +887,7 @@ function render(){
 /*-----TO DO---------
 
 // Bare Minimum
-  // Timer
-  // check win (lose if obviously if they click on a mine)
-    // mine ticker at zero + all unflagged cells clicked = win
+  // Popup for game start and end
 
 
 // Ideal to get done

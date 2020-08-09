@@ -80,7 +80,7 @@ When finished, the game will play much the same as the classic game Minesweeper
 - **Done** code right click functions
 - **Done** code random mine placement
 - **Done** code timer
-- code win and loss states and render them
+- **Done** code win and loss states and render them
 - popup window for game start and end
 
 #### Phase Three - Build in fancy stuff
