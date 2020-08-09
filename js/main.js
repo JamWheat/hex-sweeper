@@ -654,7 +654,7 @@ const checkAdjMath = [
   // an array of player options for the game to check back on when needed. for example, index 5 could be eight a 0 or a 1, representing if the player wants to view the timer. render would then check this value
 
 /*------Variables--------*/
-let gameOver, mineTotal, started
+let gameOver, mineTotal, started, timerInterval, seconds
 
 
 /*------Cached Element References--------*/
@@ -692,6 +692,16 @@ resetBtn.addEventListener('click', () => init())
 /*------Functions--------*/
 // Tools
 
+function tick(){
+  seconds++
+  render()
+}
+
+function startTimer(){
+  //  clearInterval(timerInterval)
+  timerInterval = setInterval(tick, 1000)
+}
+
 rando = (arg) => (Math.random() < arg) ? 1 : 0;
 
 function findCell(input){
@@ -721,6 +731,8 @@ function listAdjCells(cell){
 init()
 
 function init(){
+  seconds = 0
+  clearInterval(timerInterval)
   started = false
   readOut.innerText = ''
   mineTotal = 'waiting...'
@@ -761,6 +773,7 @@ function firstClick(clicked){
   })
   cell.beenClicked = true
   started = true
+  startTimer()
   render()
 }
 
@@ -773,6 +786,7 @@ function checkMine(clicked){
         document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMineS.png")'
       }
     })
+    clearInterval(timerInterval)
     gameOver = true
   } else {
     checkWin(clicked)
@@ -802,6 +816,7 @@ function flagMine(clicked){
 }
 
 function render(){
+  timer.innerText = seconds
   let flagTotal = 0
   cellData.forEach(function(obj){
     if (obj.flag === 'flag'){
@@ -810,15 +825,22 @@ function render(){
   })
   if (!started) {
     mineCounter.innerText = `Click a cell to Start!`
+    timer.innerText = '000'
   } else {
     mineCounter.innerText = `Mines Left: ${mineTotal - flagTotal}`
+    if (seconds < 10){
+      timer.innerText = `00${seconds}`
+    } else if (seconds < 100) {
+      timer.innerText = `0${seconds}`
+    } else {
+     timer.innerText = seconds
+    }
   }
   if (mineTotal - flagTotal < 0){
     mineCounter.style.color = 'red'
   } else (
     mineCounter.style.color = defaultStatus
   )
-  //update timer?
   cellData.forEach(function(obj){
     if (obj.beenClicked === false){
       if (obj.flag === 'flag') {
