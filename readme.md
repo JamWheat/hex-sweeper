@@ -2,17 +2,23 @@
 
 ## Being a game quite similar (but not exactly the same) to a game you are likely familiar with
 
-> **Note:** At the moment this game is a work in progress and has no functional prototype.
-
 ### Intent
 
 When finished, the game will play much the same as the classic game Minesweeper, except that it will be played on a hex grid (which, though it makes the board look fancier, is actually easier to play than traditional Minesweeper).
+
+### Go ahead and play the work-in-progress version!
+
+[Hex Sweeper](hex-sweeper.surge.sh)
+
+Lacks most planned functionality, but it is a thing you can win and lose!
+
 
 ### Technologies Used
 
 - JavaScript
 - CSS
 - HTML
+- Deployed via [surge.sh](surge.sh)
 
 ### Wireframe mockup of player's view
 
