@@ -678,10 +678,11 @@ gridAll.addEventListener('click', function(clicked){
   }
 });
 gridAll.addEventListener('contextmenu', function(clicked){
+  clicked.preventDefault()
   if (!gameOver){
-    // check for game started
-    clicked.preventDefault()
-    flagMine(clicked)
+    if (started){
+     flagMine(clicked)
+    }
   }
 })
 resetBtn.addEventListener('click', () => init())
@@ -731,7 +732,6 @@ function init(){
     obj.adjMines = 0
     document.getElementById(`${obj.coord}`).innerText = ``
   })
-  //run through and update adjMines now, rather than indevilually on click?
   render()
 }
 
@@ -741,7 +741,6 @@ function firstClick(clicked){
   mineTotal = 0
   cellData.forEach(function(obj){
     if (obj.coord === cell.coord){
-      // skips cell clicked
     } else {
       if (rando(randFactor) === 1) {
         obj.hasMine = true
@@ -752,9 +751,15 @@ function firstClick(clicked){
       }
     }
   })
-
-  //run through and update adjMines
-   cell.beenClicked = true
+  cellData.forEach(function(obj){
+    let adjCells = listAdjCells(obj)
+    adjCells.forEach(function(arr){
+      if (arr.hasMine){
+        obj.adjMines++
+      }
+    })       
+  })
+  cell.beenClicked = true
   started = true
   render()
 }
@@ -763,22 +768,21 @@ function checkMine(clicked){
   let cell = findCell(clicked)
   if (cell.hasMine) {
     readOut.innerText = 'BOOOM!'
+    cellData.forEach(function(obj){
+      if (obj.hasMine === true) {
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMineS.png")'
+      }
+    })
     gameOver = true
   } else {
-    checkAdj(clicked)
+    checkWin(clicked)
   }
 }
 
-function checkAdj(clicked){
+function checkWin(clicked){
   let cell = findCell(clicked)
   if (cell.beenClicked === false && cell.flag === 'none'){
-    let adjCells = listAdjCells(cell)
-    adjCells.forEach(function(arr){
-      if (arr.hasMine){
-        cell.adjMines++
-      }
-      cell.beenClicked = true
-    })       
+    cell.beenClicked = true
   }
   render()
 }
@@ -804,81 +808,59 @@ function render(){
       flagTotal++
     }
   })
-  mineCounter.innerText = `Mines Left: ${mineTotal - flagTotal}`
+  if (!started) {
+    mineCounter.innerText = `Click a cell to Start!`
+  } else {
+    mineCounter.innerText = `Mines Left: ${mineTotal - flagTotal}`
+  }
+  if (mineTotal - flagTotal < 0){
+    mineCounter.style.color = 'red'
+  } else (
+    mineCounter.style.color = defaultStatus
+  )
   //update timer?
   cellData.forEach(function(obj){
     if (obj.beenClicked === false){
       if (obj.flag === 'flag') {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlagS.png")'
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlagS2.png")'
       } else if (obj.flag === 'maybeFlag'){
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMaybeFlagS.png")'
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMaybeFlagS2.png")'
       } else {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexBevelS.png")'
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexBevelS2.png")'
       }
     } else {
-      document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlatS.png")'
+      document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlatS2.png")'
       if (obj.adjMines > 0) {
         document.getElementById(`${obj.coord}`).innerText = `${obj.adjMines}`
       }
     }
     //for debugging
-    if (obj.hasMine === true) {
-      document.getElementById(`${obj.coord}`).innerText = `X`
-    }
+    // if (obj.hasMine === true) {
+    //   document.getElementById(`${obj.coord}`).innerText = `X`
+    // }
   })
 }
 
 
 
-// beenClicked: false,
-// adjMines: null,
-// flag: 'none'
 
 /*-----TO DO---------
 
 // Bare Minimum
-  // Random Mine Placement (okay if it is shitty)
   // Timer
   // check win (lose if obviously if they click on a mine)
     // mine ticker at zero + all unflagged cells clicked = win
 
 
 // Ideal to get done
+  // spread out from empty cells
   // Procedural boards
+  // improve random mine placement (put more space around)
 
 
 --------------------------*/
-// init
-  // funtions to engage and reset the game
-  // sets reset/new game to reset
-  // askes the player for board size and mine density
-  // the possitions of the mines are NOT generated at this point, but rather after the user's fist click. it then generates the board AROUND that cell, to ensure it is not a mine
 
 
-
-// checkExplosion
-  // the first link in the chain, goes off when a user clicks on a cell
-  // on event, checks see if the cell was a mine
-  // if so, pass to gameEnd function
-  // if not, pass to checkNeighbors function
-
-
-// checkNeighbors 
-  // based on the cell clicked, check to see if any of it's neighbres has a Mine, and returns that value to the cell's data array
-    // in theory, aftually, this info can be generated the instant the board state has been generated, in which case this funtion just tells a cell has been clicked
-  // if not all the mines have been found, pass to render
-  // if all the mines have been found, pass to game end
-
-// gameEnd
-  // if the game is over, runs apropriate animations and feezes the board
-  // displates the result to the player, be it mine exploded or game won
-  // if the game was won, log the score, asking the player's name the first time
-  // changes reset/new game to new game
-  // passes to render
-
-// render
-  // itterates through the data about the board stored in gridData and renders the cells accordingly
-  // waits for player input
 
 // pause
   // the funtion that is called when the pause button is hit

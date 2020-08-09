@@ -78,7 +78,7 @@ When finished, the game will play much the same as the classic game Minesweeper
   - **Done** reset button
 - **Done** disable clickability after first click
 - **Done** code right click functions
-- code random mine placement
+- **Done** code random mine placement
 - code timer
 - code win and loss states and render them
 - popup window for game start and end
