@@ -1,636 +1,636 @@
 /*------Constants--------*/
 const cellData = [
-  x6y1 = {
+  {
     coord: 'x6y1',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x5y2 = {
+  {
     coord: 'x5y2',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x7y2 = {
+  {
     coord: 'x7y2',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x4y3 = {
+  {
     coord: 'x4y3',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x6y3 = {
+  {
     coord: 'x6y3',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x8y3 = {
+  {
     coord: 'x8y3',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x3y4= {
+  {
     coord: 'x3y4',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x5y4= {
+  {
     coord: 'x5y4',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x7y4 = {
+  {
     coord: 'x7y4',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x9y4 = {
+  {
     coord: 'x9y4',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x2y5 = {
+  {
     coord: 'x2y5',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x4y5 = {
+  {
     coord: 'x4y5',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x6y5 = {
+  {
     coord: 'x6y5',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x8y5 = {
+  {
     coord: 'x8y5',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x10y5 = {
+  {
     coord: 'x10y5',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x1y6 = {
+  {
     coord: 'x1y6',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x3y6 = {
+  {
     coord: 'x3y6',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x5y6 = {
+  {
     coord: 'x5y6',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x7y6 = {
+  {
     coord: 'x7y6',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x9y6 = {
+  {
     coord: 'x9y6',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x11y6 = {
+  {
     coord: 'x11y6',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x2y7 = {
+  {
     coord: 'x2y7',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x4y7 = {
+  {
     coord: 'x4y7',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x6y7 = {
+  {
     coord: 'x6y7',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x8y7 = {
+  {
     coord: 'x8y7',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x10y7 = {
+  {
     coord: 'x10y7',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x1y8 = {
+  {
    coord: 'x1y8',
    hasMine: false,
    beenClicked: false,
    adjMines: null,
    flag: 'none'
   },
-  x3y8 = {
+  {
     coord: 'x3y8',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x5y8 = {
+  {
     coord: 'x5y8',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x7y8 = {
+  {
     coord: 'x7y8',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x9y8 = {
+  {
     coord: 'x9y8',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x11y8 = {
+  {
     coord: 'x11y8',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x2y9 = {
+  {
     coord: 'x2y9',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x4y9 = {
+  {
     coord: 'x4y9',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x6y9 = {
+  {
     coord: 'x6y9',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x8y9= {
+  {
     coord: 'x8y9',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x10y9 = {
+  {
     coord: 'x10y9',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x1y10 = {
+  {
     coord: 'x1y10',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x3y10 = {
+  {
     coord: 'x3y10',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x5y10 = {
+  {
     coord: 'x5y10',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x7y10 = {
+  {
     coord: 'x7y10',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x9y10 = {
+  {
     coord: 'x9y10',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x11y10 = {
+  {
     coord: 'x11y10',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x2y11 = {
+  {
     coord: 'x2y11',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x4y11 = {
+  {
     coord: 'x4y11',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x6y11 = {
+  {
     coord: 'x6y11',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x8y11 = {
+  {
     coord: 'x8y11',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x10y11 = {
+  {
     coord: 'x10y11',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x1y12 = {
+  {
     coord: 'x1y12',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x3y12 = {
+  {
     coord: 'x3y12',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x5y12 = {
+  {
     coord: 'x5y12',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x7y12 = {
+  {
     coord: 'x7y12',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x9y12= {
+  {
     coord: 'x9y12',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x11y12= {
+  {
     coord: 'x11y12',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x2y13 = {
+  {
     coord: 'x2y13',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x4y13 = {
+  {
     coord: 'x4y13',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x6y13 = {
+  {
     coord: 'x6y13',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x8y13 = {
+  {
     coord: 'x8y13',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x10y13 = {
+  {
     coord: 'x10y13',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x1y14 = {
+  {
     coord: 'x1y14',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x3y14 = {
+  {
     coord: 'x3y14',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x5y14 = {
+  {
     coord: 'x5y14',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x7y14 = {
+  {
     coord: 'x7y14',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x9y14 = {
+  {
     coord: 'x9y14',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x11y14 = {
+  {
     coord: 'x11y14',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-    x2y15 = {
+  {
     coord: 'x2y15',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-    x4y15 = {
+  {
     coord: 'x4y15',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x6y15 = {
+  {
     coord: 'x6y15',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x8y15 = {
+  {
     coord: 'x8y15',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x10y15 = {
+  {
     coord: 'x10y15',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x1y16 = {
+  {
     coord: 'x1y16',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x3y16 = {
+  {
     coord: 'x3y16',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x5y16 = {
+  {
     coord: 'x5y16',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x7y16 = {
+  {
     coord: 'x7y16',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x9y16 = {
+  {
     coord: 'x9y16',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x11y16 = {
+  {
     coord: 'x11y16',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x2y17 = {
+  {
     coord: 'x2y17',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x4y17 = {
+  {
     coord: 'x4y17',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x6y17 = {
+  {
     coord: 'x6y17',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x8y17 = {
+  {
     coord: 'x8y17',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x10y17 = {
+  {
     coord: 'x10y17',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x3y18 = {
+  {
     coord: 'x3y18',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x5y18 = {
+  {
     coord: 'x5y18',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x7y18 = {
+  {
     coord: 'x7y18',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x9y18 = {
+  {
     coord: 'x9y18',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x4y19 = {
+  {
     coord: 'x4y19',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x6y19 = {
+  {
     coord: 'x6y19',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x8y19 = {
+  {
     coord: 'x8y19',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x5y20 = {
+  {
     coord: 'x5y20',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x7y20 = {
+  {
     coord: 'x7y20',
     hasMine: false,
     beenClicked: false,
     adjMines: null,
     flag: 'none'
   },
-  x6y21 = {
+  {
     coord: 'x6y21',
     hasMine: false,
     beenClicked: false,
@@ -725,7 +725,7 @@ function listAdjCells(cell){
   return adjCells
 }
 
-function clickAround(cell, loops){ //should start with loops = 0
+function clickAround(cell, loops){
   let adjList = listAdjCells(cell)
   cell.beenClicked = true
   if (adjList[loops].adjMines === 0 && adjList[loops].beenClicked === false){
@@ -743,6 +743,25 @@ function clickAround(cell, loops){ //should start with loops = 0
 
 
 /*------Gameplay Functions--------*/
+
+// Build-a-Baord Start
+
+let leng = 6
+
+function calcTotal(input){
+  let factor = 0
+  let inc = 1
+  for (let i = 0; i < (input-1); i++){
+    factor = factor + inc
+    inc++
+  }
+  return (6*(factor)) +1
+}
+
+console.log(calcTotal(leng))
+
+// Build-a-board End
+
 
 init()
 
@@ -945,6 +964,26 @@ function render(cell){
 /*----------------------------
 Things that need to be geneated and put in place for procedural boards:
 
+work out formulas based in input L:
+  @ total number of cells: still working on an elegant equation, but I found a brute force solulution
+    function calcTotal(input){
+      let factor = 0
+      let inc = 1
+      for (let i = 0; i < (input-1); i++){
+        factor = factor + inc
+        inc++
+      }
+      return (6*(factor)) +1
+    }
+  @ overall width of grid:    W = 1 + (2 * (L - 1))
+  @ overall hieght of grid:   H = 1 + (4 * (L - 1))
+  -creating rows of columns of CSS grid based on W and H
+    -rows does not matter! it is filling in what it needs as more cells are added into the html
+    -columbs DO matter. repeat (15px 28px) by the number of columns, then add on one more 15px
+  - starting coords of top center cell:
+    y will be 1, objouly, x will be half of w rounded down
+    so, x1y(floor(W / 2))
+
 put correct number of rows, columbs into css grid
 
 figure out where the center of the grid is, put first cell in center of top row using the correct center x coord
@@ -953,6 +992,13 @@ put cell into HTML - give correct x and y
 put button into html - give correct id
 
 generate cellData
+  - just need to generate the correct number of empty objects, the only vaiable is the coord, which will be both its name its coord value
+  - will naming the object based on a string be a problem?
+    - do the objects need to be named 
+
+  first, based on L, calculate W H and .style those to #gird
+  then, also based on L, calculate T and use that as i for a for loop
+    within that for loop, 
 
 
 
