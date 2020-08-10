@@ -1,643 +1,644 @@
 /*------Constants--------*/
-const cellData = [
-  {
-    coord: 'x6y1',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x5y2',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x7y2',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x4y3',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x6y3',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x8y3',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x3y4',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x5y4',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x7y4',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x9y4',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x2y5',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x4y5',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x6y5',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x8y5',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x10y5',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x1y6',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x3y6',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x5y6',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x7y6',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x9y6',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x11y6',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x2y7',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x4y7',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x6y7',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x8y7',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x10y7',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-   coord: 'x1y8',
-   hasMine: false,
-   beenClicked: false,
-   adjMines: null,
-   flag: 'none'
-  },
-  {
-    coord: 'x3y8',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x5y8',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x7y8',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x9y8',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x11y8',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x2y9',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x4y9',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x6y9',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x8y9',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x10y9',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x1y10',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x3y10',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x5y10',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x7y10',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x9y10',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x11y10',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x2y11',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x4y11',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x6y11',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x8y11',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x10y11',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x1y12',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x3y12',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x5y12',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x7y12',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x9y12',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x11y12',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x2y13',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x4y13',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x6y13',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x8y13',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x10y13',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x1y14',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x3y14',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x5y14',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x7y14',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x9y14',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x11y14',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x2y15',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x4y15',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x6y15',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x8y15',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x10y15',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x1y16',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x3y16',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x5y16',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x7y16',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x9y16',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x11y16',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x2y17',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x4y17',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x6y17',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x8y17',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x10y17',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x3y18',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x5y18',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x7y18',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x9y18',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x4y19',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x6y19',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x8y19',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x5y20',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x7y20',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  },
-  {
-    coord: 'x6y21',
-    hasMine: false,
-    beenClicked: false,
-    adjMines: null,
-    flag: 'none'
-  }
-]
+// const cellData = [
+//   {
+//     coord: 'x6y1',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x5y2',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x7y2',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x4y3',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x6y3',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x8y3',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x3y4',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x5y4',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x7y4',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x9y4',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x2y5',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x4y5',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x6y5',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x8y5',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x10y5',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x1y6',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x3y6',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x5y6',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x7y6',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x9y6',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x11y6',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x2y7',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x4y7',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x6y7',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x8y7',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x10y7',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//    coord: 'x1y8',
+//    hasMine: false,
+//    beenClicked: false,
+//    adjMines: null,
+//    flag: 'none'
+//   },
+//   {
+//     coord: 'x3y8',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x5y8',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x7y8',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x9y8',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x11y8',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x2y9',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x4y9',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x6y9',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x8y9',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x10y9',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x1y10',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x3y10',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x5y10',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x7y10',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x9y10',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x11y10',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x2y11',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x4y11',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x6y11',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x8y11',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x10y11',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x1y12',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x3y12',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x5y12',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x7y12',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x9y12',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x11y12',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x2y13',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x4y13',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x6y13',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x8y13',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x10y13',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x1y14',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x3y14',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x5y14',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x7y14',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x9y14',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x11y14',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x2y15',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x4y15',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x6y15',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x8y15',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x10y15',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x1y16',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x3y16',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x5y16',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x7y16',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x9y16',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x11y16',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x2y17',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x4y17',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x6y17',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x8y17',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x10y17',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x3y18',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x5y18',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x7y18',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x9y18',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x4y19',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x6y19',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x8y19',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x5y20',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x7y20',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   },
+//   {
+//     coord: 'x6y21',
+//     hasMine: false,
+//     beenClicked: false,
+//     adjMines: null,
+//     flag: 'none'
+//   }
+// ]
+const cellData = []
 const checkAdjMath = [
   [0, -2],
   [+1, -1],
@@ -761,6 +762,16 @@ function buildABoard(length){
   let total = (6*(factor)) +1
   // console.log(width, hieght, total)
   // use width and hieght to build css grid
+  gridAll.style.gridTemplateColumns = `repeat(${width}, 15px 28px) 15px`
+  gridAll.style.gridTemplateRows = `repeat(${hieght}, 20px)`
+  //huge for loop based on total cells
+    //for each iteration:
+      //generate coord
+      //generate html cells with gridColumb: thing/thing and gridRow thing/thing
+        //this is the part that needs to know what row it is in to put the right number of cells in as it increasy, repeartts, and then decreases
+      //generate html button with id of coord, put it INSIDE of cell
+        //use template litarals to just write in the HTML with innderHTML?
+      //generate data object with empty values and coord of coord
 }
 
 buildABoard(length)
