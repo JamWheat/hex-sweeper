@@ -87,7 +87,8 @@ Lacks most planned functionality, but it is a thing you can win and lose!
 - **Done** code random mine placement
 - **Done** code timer
 - **Done** code win and loss states and render them
-- popup window for game start and end
+- **Done, sorta** popup window for game start and end
+- > At this point there are no options to choose from, so I am skipping a popup at the start of the game for the time being.
 
 #### Phase Three - Build in fancy stuff
 

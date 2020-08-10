@@ -659,11 +659,10 @@ let gameOver, mineTotal, started, timerInterval, seconds, flagTotal, winner
 
 /*------Cached Element References--------*/
 const gridAll = document.getElementById("grid")
-//For basic testing
-const readOut = document.getElementById("readOut")
 const timer = document.getElementById("timer")
 const mineCounter = document.getElementById('mine-counter')
 const resetBtn = document.getElementById('reset-button')
+const box = document.getElementById("window")
 //pause button
 //options
 
@@ -732,11 +731,12 @@ init()
 
 function init(){
   winner = false
+  box.style.display = "none"
+  box.innerHTML = ''
   seconds = 0
   flagTotal = 0
   clearInterval(timerInterval)
   started = false
-  readOut.innerText = ''
   gameOver = false
   cellData.forEach(function(obj){
     obj.flag = 'none'
@@ -830,7 +830,8 @@ function flagMine(clicked){
 function render(cell){
   if (winner){
     gameOver = true
-    readOut.innerText = "You win!"
+    box.style.display = "flex"
+    box.innerHTML = `<p>Congratulations!</p><p>You found ${mineTotal} mines in ${seconds} seconds!</p><p>Press Reset to play again.</p>`
   }
   timer.innerText = seconds
   if (!started) {
@@ -867,7 +868,6 @@ function render(cell){
       }
     }
     if (gameOver === true && winner === false){
-      readOut.innerText = 'BOOOM! You lose!'
       if (obj.hasMine) {
         document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMine.png")'
       }
@@ -882,9 +882,9 @@ function render(cell){
       }
     }
     //for debugging
-    // if (obj.hasMine === true) {
-    //   document.getElementById(`${obj.coord}`).innerText = `X`
-    // }
+    if (obj.hasMine === true) {
+      document.getElementById(`${obj.coord}`).innerText = `X`
+    }
   })
 }
 
