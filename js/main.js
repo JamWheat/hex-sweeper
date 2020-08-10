@@ -731,8 +731,8 @@ init()
 
 function init(){
   winner = false
-  box.style.display = "none"
   box.innerHTML = ''
+  box.style.top = '-100px'
   seconds = 0
   flagTotal = 0
   clearInterval(timerInterval)
@@ -752,15 +752,20 @@ function firstClick(clicked){
   let cell = findCell(clicked)
   let randFactor = .1
   mineTotal = 0
+  let adjCells = listAdjCells(cell)
+  adjCoords = adjCells.map(function(obj){
+    return obj.coord
+  })
+  adjCoords.push(cell.coord)
   cellData.forEach(function(obj){
-    if (obj.coord === cell.coord){
+    if (adjCoords.includes(obj.coord)){
     } else {
       if (rando(randFactor) === 1) {
         obj.hasMine = true
         randFactor = .1
         mineTotal++
       } else {
-        randFactor = randFactor + .1
+        randFactor = randFactor + .05
       }
     }
   })
@@ -830,7 +835,7 @@ function flagMine(clicked){
 function render(cell){
   if (winner){
     gameOver = true
-    box.style.display = "flex"
+    box.style.top = '250px'
     box.innerHTML = `<p>Congratulations!</p><p>You found ${mineTotal} mines in ${seconds} seconds!</p><p>Press Reset to play again.</p>`
   }
   timer.innerText = seconds
@@ -882,9 +887,9 @@ function render(cell){
       }
     }
     //for debugging
-    if (obj.hasMine === true) {
-      document.getElementById(`${obj.coord}`).innerText = `X`
-    }
+    // if (obj.hasMine === true) {
+    //   document.getElementById(`${obj.coord}`).innerText = `X`
+    // }
   })
 }
 
