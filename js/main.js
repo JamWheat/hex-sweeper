@@ -725,6 +725,15 @@ function listAdjCells(cell){
   return adjCells
 }
 
+function clickAround(cell){
+  if (cell.adjMines === 0) {
+    let adjList  = listAdjCells(cell)
+    adjList.forEach(function(obj){
+      obj.beenClicked = true
+    })
+  }
+}
+
 /*------Gameplay Functions--------*/
 
 init()
@@ -778,6 +787,7 @@ function firstClick(clicked){
     })       
   })
   cell.beenClicked = true
+  clickAround(cell)
   started = true
   startTimer()
   render()
@@ -802,16 +812,26 @@ function checkWin(clicked){
   if (cell.beenClicked === false && cell.flag === 'none'){
     cell.beenClicked = true
   }
-  let clickedTotal = 0 
-  cellData.forEach(function(obj){
-    if (obj.beenClicked === true){
-      clickedTotal++
-    }
+  // if cell.adjMines  = 0, run checkWin() on each of it's neighbores
+  // new code start
+  // create funtions, run it here and in first click
+  clickAround(cell)
+
+
+
+
+
+  //new code end
+  let clickedTotal = 0                //
+  cellData.forEach(function(obj){     //
+    if (obj.beenClicked === true){    //  Convert to .reduce()?
+      clickedTotal++                  //
+    }                                 //
   })
   if (mineTotal + clickedTotal === cellData.length){
-
     clearInterval(timerInterval)
     winner = true
+    gameOver = true
   }
   render()
 }
@@ -834,7 +854,6 @@ function flagMine(clicked){
 
 function render(cell){
   if (winner){
-    gameOver = true
     box.style.top = '250px'
     box.innerHTML = `<p>Congratulations!</p><p>You found ${mineTotal} mines in ${seconds} seconds!</p><p>Press Reset to play again.</p>`
   }
@@ -887,26 +906,30 @@ function render(cell){
       }
     }
     //for debugging
-    // if (obj.hasMine === true) {
-    //   document.getElementById(`${obj.coord}`).innerText = `X`
-    // }
+    if (obj.hasMine === true) {
+      document.getElementById(`${obj.coord}`).innerText = `X`
+    }
   })
 }
 
 
 
 
-/*-----TO DO---------
+/*-----TO DO Short Term---------
 
+// Short Term
+  // spread out from empty cells
+  // Procedural boards
+  // finalize style for default theme
 
-// spread out from empty cells
-// improve initial click (put more space around)
-// Procedural boards
+// Long term
+  //pause button
+  //options
+  //themes
+  //Move images to imgur (or similar)
 
 
 --------------------------*/
-
-
 
 // pause
   // the funtion that is called when the pause button is hit
