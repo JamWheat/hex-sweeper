@@ -95,7 +95,7 @@ Lacks most planned functionality, but it is a thing you can win and lose!
 > Turns out building pre-build boards in a hex grid is a huge pain in the ass (at least the way I have my hex grid). Even a "small" board six hexes to a side has nearly 100 cells, ripe for bugs in the building and game execution. I truly think making the procedural board generation will be easier than making bigger boards by hand, so I am bumping that up the priority list. Plus, once that's done, the game can still have "preset" boards, they will just run through the generation function same as a "custom" board.
 
 - code dynamic board generation
-- code spreadFromEmpty functionality
+- **Done** code spreadFromEmpty functionality
 - "soft click" functionality, graphics
 - middle mouse button or click on a numbered cell to reveal all adjacent unflagged, unclicked cells (whether they have mines or not)
 - allow the player to choose mine density

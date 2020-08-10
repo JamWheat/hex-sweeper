@@ -725,14 +725,22 @@ function listAdjCells(cell){
   return adjCells
 }
 
-function clickAround(cell){
-  if (cell.adjMines === 0) {
-    let adjList  = listAdjCells(cell)
-    adjList.forEach(function(obj){
-      obj.beenClicked = true
-    })
+function clickAround(cell, loops){ //should start with loops = 0
+  let adjList = listAdjCells(cell)
+  cell.beenClicked = true
+  if (adjList[loops].adjMines === 0 && adjList[loops].beenClicked === false){
+    let next = adjList[loops]
+    clickAround(next, 0)
+  }
+  adjList[loops].beenClicked = true
+  loops++
+  if (loops < adjList.length) {
+    clickAround(cell, loops)
+  } else {
+    return
   }
 }
+
 
 /*------Gameplay Functions--------*/
 
@@ -786,11 +794,13 @@ function firstClick(clicked){
       }
     })       
   })
-  cell.beenClicked = true
-  clickAround(cell)
-  started = true
-  startTimer()
-  render()
+  cell.beenClicked = true     //
+  if (cell.adjMines === 0){   //
+    clickAround(cell, 0)      //  Pass to checkMine instead, to mainant coltrol flow?
+  }                           //
+  started = true              //
+  startTimer()                //
+  render()                    //
 }
 
 function checkMine(clicked){
@@ -812,16 +822,9 @@ function checkWin(clicked){
   if (cell.beenClicked === false && cell.flag === 'none'){
     cell.beenClicked = true
   }
-  // if cell.adjMines  = 0, run checkWin() on each of it's neighbores
-  // new code start
-  // create funtions, run it here and in first click
-  clickAround(cell)
-
-
-
-
-
-  //new code end
+  if (cell.adjMines === 0){
+    clickAround(cell, 0)
+  }
   let clickedTotal = 0                //
   cellData.forEach(function(obj){     //
     if (obj.beenClicked === true){    //  Convert to .reduce()?
@@ -855,7 +858,7 @@ function flagMine(clicked){
 function render(cell){
   if (winner){
     box.style.top = '250px'
-    box.innerHTML = `<p>Congratulations!</p><p>You found ${mineTotal} mines in ${seconds} seconds!</p><p>Press Reset to play again.</p>`
+    box.innerHTML = `<p>Congratulations!</p><p>You found all ${mineTotal} mines in ${seconds} seconds!</p><p>Press Reset to play again.</p>`
   }
   timer.innerText = seconds
   if (!started) {
@@ -906,9 +909,9 @@ function render(cell){
       }
     }
     //for debugging
-    if (obj.hasMine === true) {
-      document.getElementById(`${obj.coord}`).innerText = `X`
-    }
+    // if (obj.hasMine === true) {
+    //   document.getElementById(`${obj.coord}`).innerText = `X`
+    // }
   })
 }
 
@@ -923,6 +926,9 @@ function render(cell){
   // finalize style for default theme
 
 // Long term
+  //click on numbered cell to click around it
+    //clickAround can do this, but at the moment it does not check for a lose state. I will need to refactor the control flow so that clickAround passes to hasMine?
+      //no, write new funtion when cliking on a cell that has adjMine > 0
   //pause button
   //options
   //themes
