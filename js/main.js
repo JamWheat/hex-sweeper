@@ -803,7 +803,7 @@ function checkWin(clicked){
       clickedTotal++
     }
   })
-  if (flagTotal + clickedTotal === cellData.length){
+  if (mineTotal + clickedTotal === cellData.length){
 
     clearInterval(timerInterval)
     winner = true
@@ -893,14 +893,10 @@ function render(cell){
 
 /*-----TO DO---------
 
-// Bare Minimum
-  // Popup for game start and end
 
-
-// Ideal to get done
-  // spread out from empty cells
-  // Procedural boards
-  // improve random mine placement (put more space around)
+// spread out from empty cells
+// improve initial click (put more space around)
+// Procedural boards
 
 
 --------------------------*/
