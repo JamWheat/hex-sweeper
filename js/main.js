@@ -746,19 +746,34 @@ function clickAround(cell, loops){
 
 // Build-a-Baord Start
 
-let leng = 6
+let length = 6
 
-function calcTotal(input){
+function buildABoard(length){
+  // determine width and hieght
+  let width = 1+(2*(length-1))
+  let hieght = 1+(4*(length-1))
   let factor = 0
   let inc = 1
-  for (let i = 0; i < (input-1); i++){
+  for (let i = 0; i < (length-1); i++){
+    factor = factor + inc
+    inc++
+  }
+  let total = (6*(factor)) +1
+  // console.log(width, hieght, total)
+  // use width and hieght to build css grid
+}
+
+buildABoard(length)
+
+function calcTotal(leng){
+  let factor = 0
+  let inc = 1
+  for (let i = 0; i < (leng-1); i++){
     factor = factor + inc
     inc++
   }
   return (6*(factor)) +1
 }
-
-console.log(calcTotal(leng))
 
 // Build-a-board End
 
@@ -940,26 +955,30 @@ function render(cell){
 /*-----TO DO Short Term---------
 
 // Short Term
-  // spread out from empty cells
   // Procedural boards
+  // left click /  middle click on numbred tiled to hasClicked all around it, even if that hits a bomb
+    // add groundZero key to objects?
+    // or better, a variable that can be assign the coords of groundZero that render will reference
+    // have that be part of checkBomb
+    // old notes:
+        //click on numbered cell to click around it
+        //clickAround can do this, but at the moment it does not check for a lose state. I will need to refactor the control flow so that clickAround passes to hasMine?
+          //no, write new funtion when cliking on a cell that has adjMine > 0
   // finalize style for default theme
+    //animated start/end popup
 
 // Long term
-  //click on numbered cell to click around it
-    //clickAround can do this, but at the moment it does not check for a lose state. I will need to refactor the control flow so that clickAround passes to hasMine?
-      //no, write new funtion when cliking on a cell that has adjMine > 0
+
   //pause button
+  //how to play
   //options
   //themes
+  //sounds
+  //player info tracking for "themeChievments"
   //Move images to imgur (or similar)
 
 
 --------------------------*/
-
-// pause
-  // the funtion that is called when the pause button is hit
-  // halts the timer
-  // freezes the board state and covers it so that the player cannot cheat and consider a move while the timer is paused
 
 /*----------------------------
 Things that need to be geneated and put in place for procedural boards:
@@ -983,6 +1002,8 @@ work out formulas based in input L:
   - starting coords of top center cell:
     y will be 1, objouly, x will be half of w rounded down
     so, x1y(floor(W / 2))
+  - when generating rows, expand for (L-1) rows, alternate for (l-.5) rows, contract for (L-1) rows
+    -each row, put in the right x coord, but y cord will be easy as that is whatever column it is in
 
 put correct number of rows, columbs into css grid
 
@@ -994,7 +1015,9 @@ put button into html - give correct id
 generate cellData
   - just need to generate the correct number of empty objects, the only vaiable is the coord, which will be both its name its coord value
   - will naming the object based on a string be a problem?
-    - do the objects need to be named 
+    - do the objects need to be named ?
+    - NO! Apaernelty the funtions never bothered to try, they were always useing the coord key. whish is fine with me!
+  -so, as cells are bring created in the gid, in the same area of the for loop (or whatever) generate an object, give it the coord, and push it into the cellData array  
 
   first, based on L, calculate W H and .style those to #gird
   then, also based on L, calculate T and use that as i for a for loop
