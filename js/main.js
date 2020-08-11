@@ -118,7 +118,7 @@ function generator(x,y){
   cell.style.gridRow = `${y}/${y+2}`
   cell.innerHTML = `<button class="cellBtn" id="${id}"></button>`
   gridAll.appendChild(cell)
-  const hex = {coord: id, hasMine: false, beenClicked: false, adjMines: null, flag: 'none'}
+  const hex = {coord: id, hasMine: false, beenClicked: false, adjMines: 0, flag: 'none'}
   cellData.push(hex)
 }
 
@@ -191,15 +191,11 @@ function buildABoard(length){
 
 /*------Gameplay Functions--------*/
 
-// let length = 5
-// buildABoard(length)
 init()
-
 
 function init(){
   cellData = []
   gridAll.innerHTML = ''
-  sizeInput.value = ''
   winner = false
   box.innerHTML = ''
   box.style.top = '-100px'
@@ -376,6 +372,8 @@ function render(cell){
 // Short Term
   // fix scrolling problem
   // program edge cases of boardSize inputs
+    // gotta be a number
+    // easter egg for length of 1
   // reset button can ask if you want the same board or new options
   // left click /  middle click on numbred tiled to hasClicked all around it, even if that hits a bomb
     // add groundZero key to objects?
