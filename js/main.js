@@ -638,7 +638,8 @@
 //     flag: 'none'
 //   }
 // ]
-const cellData = []
+const cellData = [
+]
 const checkAdjMath = [
   [0, -2],
   [+1, -1],
@@ -748,6 +749,16 @@ function clickAround(cell, loops){
 // Build-a-Baord Start
 
 let length = 6
+function generator(x,y){
+  let id = `x${x}y${y}`
+  let cell = document.createElement("cell")
+  cell.style.gridColumn = `${(x*2)-1}/${(x*2)+2}`
+  cell.style.gridRow = `${y}/${y+2}`
+  cell.innerHTML = `<button class="cellBtn" id="${id}"></button>`
+  gridAll.appendChild(cell)
+  const hex = {coord: id, hasMine: false, beenClicked: false, adjMines: null, flag: 'none'}
+  cellData.push(hex)
+}
 
 function buildABoard(length){
   // determine width and hieght
@@ -763,7 +774,7 @@ function buildABoard(length){
   // console.log(width, hieght, total)
   // use width and hieght to build css grid
   gridAll.style.gridTemplateColumns = `repeat(${width}, 15px 28px) 15px`
-  gridAll.style.gridTemplateRows = `repeat(${hieght}, 20px)`
+  gridAll.style.gridTemplateRows = `repeat(${hieght}, 25px)`
   //huge for loop based on total cells
     //for each iteration:
       //generate coord
@@ -772,24 +783,58 @@ function buildABoard(length){
       //generate html button with id of coord, put it INSIDE of cell
         //use template litarals to just write in the HTML with innderHTML?
       //generate data object with empty values and coord of coord
-}
-
-buildABoard(length)
-
-function calcTotal(leng){
-  let factor = 0
-  let inc = 1
-  for (let i = 0; i < (leng-1); i++){
-    factor = factor + inc
-    inc++
+  let x = 1
+  let y = 16
+  let xCenter = Math.ceil(width/2)
+  let xOdds = [xCenter]
+  let offSet = 1
+  let xEvens = [(xCenter - offSet), (xCenter + offSet)]
+  let alternate = 1 // 1 for xOdds, -1 for xEvens
+  for(let i = 0; i < length; i++){
+    if (alternate === 1) {
+      xOdds.forEach(function(){
+        console.log(xOdds)
+      })
+      offSet++
+      xOdds.unshift(xCenter - offSet)
+      xOdds.push(xCenter + offSet)
+    } else {
+      xEvens.forEach(function(){
+        console.log(xEvens)
+      })
+      offSet++
+      xEvens.unshift(xCenter - offSet)
+      xEvens.push(xCenter + offSet)
+    }
+    alternate *= -1
   }
-  return (6*(factor)) +1
+  //put all this in a function?
+    //will need to get the correct value of x and y 
+  let id = `x${x}y${y}`
+  let cell = document.createElement("cell")
+  cell.style.gridColumn = `${(x*2)-1}/${(x*2)+2}`
+  cell.style.gridRow = `${y}/${y+2}`
+  cell.innerHTML = `<button class="cellBtn" id="${id}"></button>`
+  gridAll.appendChild(cell)
+  const hex = {coord: id, hasMine: false, beenClicked: false, adjMines: null, flag: 'none'}
+  cellData.push(hex)
 }
+
+//{
+  //     coord: 'x8y19',
+  //     hasMine: false,
+  //     beenClicked: false,
+  //     adjMines: null,
+  //     flag: 'none'
+  //   },
+
 
 // Build-a-board End
 
 
+buildABoard(length)
 init()
+
 
 function init(){
   winner = false

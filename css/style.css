@@ -84,7 +84,7 @@ button:focus {
 }
 
 button.cellBtn{
-  border-width: 0px;
+  border-width: 2px;
   height: 50px;
   width: 50px;
   border-radius: 100%;
