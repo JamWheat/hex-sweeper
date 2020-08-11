@@ -1,643 +1,4 @@
 /*------Constants--------*/
-// const cellData = [
-//   {
-//     coord: 'x6y1',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x5y2',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x7y2',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x4y3',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x6y3',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x8y3',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x3y4',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x5y4',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x7y4',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x9y4',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x2y5',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x4y5',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x6y5',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x8y5',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x10y5',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x1y6',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x3y6',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x5y6',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x7y6',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x9y6',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x11y6',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x2y7',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x4y7',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x6y7',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x8y7',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x10y7',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//    coord: 'x1y8',
-//    hasMine: false,
-//    beenClicked: false,
-//    adjMines: null,
-//    flag: 'none'
-//   },
-//   {
-//     coord: 'x3y8',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x5y8',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x7y8',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x9y8',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x11y8',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x2y9',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x4y9',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x6y9',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x8y9',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x10y9',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x1y10',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x3y10',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x5y10',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x7y10',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x9y10',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x11y10',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x2y11',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x4y11',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x6y11',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x8y11',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x10y11',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x1y12',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x3y12',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x5y12',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x7y12',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x9y12',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x11y12',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x2y13',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x4y13',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x6y13',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x8y13',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x10y13',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x1y14',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x3y14',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x5y14',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x7y14',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x9y14',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x11y14',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x2y15',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x4y15',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x6y15',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x8y15',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x10y15',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x1y16',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x3y16',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x5y16',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x7y16',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x9y16',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x11y16',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x2y17',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x4y17',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x6y17',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x8y17',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x10y17',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x3y18',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x5y18',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x7y18',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x9y18',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x4y19',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x6y19',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x8y19',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x5y20',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x7y20',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   },
-//   {
-//     coord: 'x6y21',
-//     hasMine: false,
-//     beenClicked: false,
-//     adjMines: null,
-//     flag: 'none'
-//   }
-// ]
 const cellData = [
 ]
 const checkAdjMath = [
@@ -648,7 +9,6 @@ const checkAdjMath = [
   [-1, +1],
   [-1, -1]
 ]
-
 
 // playerInfo = {}
   // an object that stores player info, such as name, previous scores, and wins
@@ -691,8 +51,6 @@ resetBtn.addEventListener('click', () => init())
 // options
 
 /*------Tool Functions--------*/
-
-
 function tick(){
   seconds++
   render()
@@ -743,12 +101,6 @@ function clickAround(cell, loops){
   }
 }
 
-
-/*------Gameplay Functions--------*/
-
-// Build-a-Baord Start
-
-let length = 6
 function generator(x,y){
   let id = `x${x}y${y}`
   let cell = document.createElement("cell")
@@ -761,80 +113,76 @@ function generator(x,y){
 }
 
 function buildABoard(length){
-  // determine width and hieght
   let width = 1+(2*(length-1))
   let hieght = 1+(4*(length-1))
-  let factor = 0
-  let inc = 1
-  for (let i = 0; i < (length-1); i++){
-    factor = factor + inc
-    inc++
-  }
-  let total = (6*(factor)) +1
-  // console.log(width, hieght, total)
-  // use width and hieght to build css grid
   gridAll.style.gridTemplateColumns = `repeat(${width}, 15px 28px) 15px`
   gridAll.style.gridTemplateRows = `repeat(${hieght}, 25px)`
-  //huge for loop based on total cells
-    //for each iteration:
-      //generate coord
-      //generate html cells with gridColumb: thing/thing and gridRow thing/thing
-        //this is the part that needs to know what row it is in to put the right number of cells in as it increasy, repeartts, and then decreases
-      //generate html button with id of coord, put it INSIDE of cell
-        //use template litarals to just write in the HTML with innderHTML?
-      //generate data object with empty values and coord of coord
   let x = 1
-  let y = 16
+  let y = 1
   let xCenter = Math.ceil(width/2)
   let xOdds = [xCenter]
   let offSet = 1
   let xEvens = [(xCenter - offSet), (xCenter + offSet)]
-  let alternate = 1 // 1 for xOdds, -1 for xEvens
-  for(let i = 0; i < length; i++){
+  let alternate = 1
+  for(let i = 0; i < (length-2); i++){
     if (alternate === 1) {
-      xOdds.forEach(function(){
-        console.log(xOdds)
+      xOdds.forEach(function(arr){
+        generator(arr, y)
       })
+      y++
       offSet++
       xOdds.unshift(xCenter - offSet)
       xOdds.push(xCenter + offSet)
     } else {
-      xEvens.forEach(function(){
-        console.log(xEvens)
+      xEvens.forEach(function(arr){
+        generator(arr, y)
       })
+      y++
       offSet++
       xEvens.unshift(xCenter - offSet)
       xEvens.push(xCenter + offSet)
     }
     alternate *= -1
   }
-  //put all this in a function?
-    //will need to get the correct value of x and y 
-  let id = `x${x}y${y}`
-  let cell = document.createElement("cell")
-  cell.style.gridColumn = `${(x*2)-1}/${(x*2)+2}`
-  cell.style.gridRow = `${y}/${y+2}`
-  cell.innerHTML = `<button class="cellBtn" id="${id}"></button>`
-  gridAll.appendChild(cell)
-  const hex = {coord: id, hasMine: false, beenClicked: false, adjMines: null, flag: 'none'}
-  cellData.push(hex)
+  for(let i = 0; i < ((length *2) -1); i++){
+    if (alternate === 1) {
+      xOdds.forEach(function(arr){
+        generator(arr, y)
+      })
+      y++
+    } else {
+      xEvens.forEach(function(arr){
+        generator(arr, y)
+      })
+      y++
+    }
+    alternate *= -1
+  }
+  for(let i = 0; i < length; i++){
+    if (alternate === 1) {
+      xOdds.forEach(function(arr){
+        generator(arr, y)
+      })
+      y++
+      xOdds.shift()
+      xOdds.pop()
+    } else {
+      xEvens.forEach(function(arr){
+        generator(arr, y)
+      })
+      y++
+      xEvens.shift()
+      xEvens.pop()
+    }
+    alternate *= -1
+  }
 }
 
-//{
-  //     coord: 'x8y19',
-  //     hasMine: false,
-  //     beenClicked: false,
-  //     adjMines: null,
-  //     flag: 'none'
-  //   },
+/*------Gameplay Functions--------*/
 
-
-// Build-a-board End
-
-
+let length = 15
 buildABoard(length)
 init()
-
 
 function init(){
   winner = false
@@ -1011,7 +359,10 @@ function render(cell){
 /*-----TO DO Short Term---------
 
 // Short Term
-  // Procedural boards
+  // game start popup with board size / mine density options
+
+  // justify ui to browser
+  // reset button can ask if you want the same board or new options
   // left click /  middle click on numbred tiled to hasClicked all around it, even if that hits a bomb
     // add groundZero key to objects?
     // or better, a variable that can be assign the coords of groundZero that render will reference
@@ -1021,6 +372,7 @@ function render(cell){
         //clickAround can do this, but at the moment it does not check for a lose state. I will need to refactor the control flow so that clickAround passes to hasMine?
           //no, write new funtion when cliking on a cell that has adjMine > 0
   // finalize style for default theme
+    //hidden hex behind the board with shadow/glow?
     //animated start/end popup
 
 // Long term
@@ -1035,50 +387,3 @@ function render(cell){
 
 
 --------------------------*/
-
-/*----------------------------
-Things that need to be geneated and put in place for procedural boards:
-
-work out formulas based in input L:
-  @ total number of cells: still working on an elegant equation, but I found a brute force solulution
-    function calcTotal(input){
-      let factor = 0
-      let inc = 1
-      for (let i = 0; i < (input-1); i++){
-        factor = factor + inc
-        inc++
-      }
-      return (6*(factor)) +1
-    }
-  @ overall width of grid:    W = 1 + (2 * (L - 1))
-  @ overall hieght of grid:   H = 1 + (4 * (L - 1))
-  -creating rows of columns of CSS grid based on W and H
-    -rows does not matter! it is filling in what it needs as more cells are added into the html
-    -columbs DO matter. repeat (15px 28px) by the number of columns, then add on one more 15px
-  - starting coords of top center cell:
-    y will be 1, objouly, x will be half of w rounded down
-    so, x1y(floor(W / 2))
-  - when generating rows, expand for (L-1) rows, alternate for (l-.5) rows, contract for (L-1) rows
-    -each row, put in the right x coord, but y cord will be easy as that is whatever column it is in
-
-put correct number of rows, columbs into css grid
-
-figure out where the center of the grid is, put first cell in center of top row using the correct center x coord
-
-put cell into HTML - give correct x and y
-put button into html - give correct id
-
-generate cellData
-  - just need to generate the correct number of empty objects, the only vaiable is the coord, which will be both its name its coord value
-  - will naming the object based on a string be a problem?
-    - do the objects need to be named ?
-    - NO! Apaernelty the funtions never bothered to try, they were always useing the coord key. whish is fine with me!
-  -so, as cells are bring created in the gid, in the same area of the for loop (or whatever) generate an object, give it the coord, and push it into the cellData array  
-
-  first, based on L, calculate W H and .style those to #gird
-  then, also based on L, calculate T and use that as i for a for loop
-    within that for loop, 
-
-
-
--------------*/
