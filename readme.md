@@ -10,12 +10,7 @@ When finished, the game will play much the same as the classic game Minesweeper
 
 [Hex Sweeper](hex-sweeper.surge.sh)
 
-Lacks most planned functionality, but it is a thing you can win and lose!
-
-> **KNOWN ISSUE**
-> 
-> If the board grows bigger than your browser window, the left side extends beyond the window and you cannot scroll to it. Working on a fix.
-
+(still a work in progress, but not too shabby!)
 
 ### Technologies Used
 
@@ -92,7 +87,6 @@ Lacks most planned functionality, but it is a thing you can win and lose!
 - **Done** code timer
 - **Done** code win and loss states and render them
 - **Done, sorta** popup window for game start and end
-- > At this point there are no options to choose from, so I am skipping a popup at the start of the game for the time being.
 
 #### Phase Three - Build in fancy stuff
 

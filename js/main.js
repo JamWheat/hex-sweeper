@@ -54,6 +54,11 @@ gridAll.addEventListener('contextmenu', function(clicked){
 resetBtn.addEventListener('click', () => init())
 
 startBtn.addEventListener('click', function(){
+  if (isNaN(parseInt(sizeInput.value)) === true){
+    sizeInput.value = ''
+    sizeInput.placeholder = 'numbers only'
+    return
+  }
   welcome.style.top = '-1000px'
   buildABoard(parseInt(sizeInput.value))
 })
@@ -186,6 +191,22 @@ function buildABoard(length){
     }
     alternate *= -1
   }
+  // console.log(gridAll.clientWidth)
+  // let gridWidth = gridAll.clientWidth
+  // console.log(gridWidth/2)
+  // window.scroll((gridWidth/6), 0)
+
+  // window.scrollTo(screen.width/2, 0)
+
+  // console.log('grid width:', gridAll.clientWidth)
+  // console.log('window widht:', window.innerWidth)
+  // let overflow = ((gridAll.clientWidth - window.innerWidth)/2)
+  // console.log('overflow', overflow)
+  // let overPercent = (overflow / gridAll.clientWidth)
+  // console.log('overflow percent', overPercent)
+  // let scrollAmount = (Math.floor(gridAll.clientWidth*overPercent))
+  // console.log('amount to scroll left', scrollAmount)
+  window.scrollTo((Math.floor(gridAll.clientWidth*(((gridAll.clientWidth - window.innerWidth)/2) / gridAll.clientWidth))), 0)
   render()
 }
 
@@ -194,6 +215,7 @@ function buildABoard(length){
 init()
 
 function init(){
+  window.scrollTo(0,0)
   cellData = []
   gridAll.innerHTML = ''
   winner = false
