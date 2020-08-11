@@ -180,7 +180,7 @@ function buildABoard(length){
 
 /*------Gameplay Functions--------*/
 
-let length = 15
+let length = 25
 buildABoard(length)
 init()
 
