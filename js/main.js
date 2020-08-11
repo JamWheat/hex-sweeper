@@ -1,5 +1,5 @@
 /*------Constants--------*/
-const cellData = [
+let cellData = [
 ]
 const checkAdjMath = [
   [0, -2],
@@ -25,6 +25,9 @@ const timer = document.getElementById("timer")
 const mineCounter = document.getElementById('mine-counter')
 const resetBtn = document.getElementById('reset-button')
 const box = document.getElementById("window")
+const welcome = document.getElementById("welcome")
+const startBtn = document.getElementById("start")
+const sizeInput = document.getElementById("boardSize")
 //pause button
 //options
 
@@ -38,6 +41,7 @@ gridAll.addEventListener('click', function(clicked){
     }
   }
 });
+
 gridAll.addEventListener('contextmenu', function(clicked){
   clicked.preventDefault()
   if (!gameOver){
@@ -46,7 +50,13 @@ gridAll.addEventListener('contextmenu', function(clicked){
     }
   }
 })
+
 resetBtn.addEventListener('click', () => init())
+
+startBtn.addEventListener('click', function(){
+  welcome.style.top = '-1000px'
+  buildABoard(parseInt(sizeInput.value))
+})
 // pause
 // options
 
@@ -176,15 +186,20 @@ function buildABoard(length){
     }
     alternate *= -1
   }
+  render()
 }
 
 /*------Gameplay Functions--------*/
 
-let length = 25
-buildABoard(length)
+// let length = 5
+// buildABoard(length)
 init()
 
+
 function init(){
+  cellData = []
+  gridAll.innerHTML = ''
+  sizeInput.value = ''
   winner = false
   box.innerHTML = ''
   box.style.top = '-100px'
@@ -200,7 +215,7 @@ function init(){
     obj.adjMines = 0
     document.getElementById(`${obj.coord}`).innerText = ``
   })
-  render()
+  welcome.style.top = '250px'
 }
 
 function firstClick(clicked){
@@ -359,9 +374,8 @@ function render(cell){
 /*-----TO DO Short Term---------
 
 // Short Term
-  // game start popup with board size / mine density options
-
-  // justify ui to browser
+  // fix scrolling problem
+  // program edge cases of boardSize inputs
   // reset button can ask if you want the same board or new options
   // left click /  middle click on numbred tiled to hasClicked all around it, even if that hits a bomb
     // add groundZero key to objects?

@@ -12,6 +12,10 @@ When finished, the game will play much the same as the classic game Minesweeper
 
 Lacks most planned functionality, but it is a thing you can win and lose!
 
+> **KNOWN ISSUE**
+> 
+> If the board grows bigger than your browser window, the left side extends beyond the window and you cannot scroll to it. Working on a fix.
+
 
 ### Technologies Used
 
@@ -96,8 +100,8 @@ Lacks most planned functionality, but it is a thing you can win and lose!
 
 - **Done!** code dynamic board generation
 - **Done** code spreadFromEmpty functionality
-- starting window so players can choose board size and mine density
-- justify UI to browswer window
+- **Half done** starting window so players can choose board size and mine density
+- **Done** justify UI to browswer window
 - "soft click" functionality, graphics
 - middle mouse button or click on a numbered cell to reveal all adjacent unflagged, unclicked cells (whether they have mines or not)
 - high score table
