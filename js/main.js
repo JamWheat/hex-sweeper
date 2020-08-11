@@ -16,7 +16,7 @@ const checkAdjMath = [
   // an array of player options for the game to check back on when needed. for example, index 5 could be eight a 0 or a 1, representing if the player wants to view the timer. render would then check this value
 
 /*------Variables--------*/
-let gameOver, mineTotal, started, timerInterval, seconds, flagTotal, winner
+let gameOver, mineTotal, started, timerInterval, seconds, flagTotal, winner, benMode
 
 
 /*------Cached Element References--------*/
@@ -57,6 +57,11 @@ startBtn.addEventListener('click', function(){
   if (isNaN(parseInt(sizeInput.value)) === true){
     sizeInput.value = ''
     sizeInput.placeholder = 'numbers only'
+    return
+  }
+  if (parseInt(sizeInput.value) < 2 || parseInt(sizeInput.value) > 70 ) {
+    sizeInput.value = ''
+    sizeInput.placeholder = '2 to 70'
     return
   }
   welcome.style.top = '-1000px'
@@ -215,6 +220,7 @@ function buildABoard(length){
 init()
 
 function init(){
+  benMode = false
   window.scrollTo(0,0)
   cellData = []
   gridAll.innerHTML = ''
@@ -226,13 +232,8 @@ function init(){
   clearInterval(timerInterval)
   started = false
   gameOver = false
-  cellData.forEach(function(obj){
-    obj.flag = 'none'
-    obj.hasMine = false
-    obj.beenClicked = false
-    obj.adjMines = 0
-    document.getElementById(`${obj.coord}`).innerText = ``
-  })
+  mineCounter.innerText = ''
+  timer.innerText = ''
   welcome.style.top = '250px'
 }
 
@@ -392,30 +393,31 @@ function render(cell){
 /*-----TO DO Short Term---------
 
 // Short Term
-  // fix scrolling problem
-  // program edge cases of boardSize inputs
-    // gotta be a number
-    // easter egg for length of 1
   // reset button can ask if you want the same board or new options
   // left click /  middle click on numbred tiled to hasClicked all around it, even if that hits a bomb
-    // add groundZero key to objects?
+  // add groundZero key to objects?
     // or better, a variable that can be assign the coords of groundZero that render will reference
     // have that be part of checkBomb
     // old notes:
-        //click on numbered cell to click around it
-        //clickAround can do this, but at the moment it does not check for a lose state. I will need to refactor the control flow so that clickAround passes to hasMine?
-          //no, write new funtion when cliking on a cell that has adjMine > 0
+    //click on numbered cell to click around it
+    //clickAround can do this, but at the moment it does not check for a lose state. I will need to refactor the control flow so that clickAround passes to hasMine?
+            //no, write new funtion when cliking on a cell that has adjMine > 0
   // finalize style for default theme
-    //hidden hex behind the board with shadow/glow?
-    //animated start/end popup
-
-// Long term
-
+  //better colors
+  //hafta redo the images in photoshop, but that's play, I'll do it better this time
+  //change font
+  //add sounds?  
+  //hidden hex behind the board with shadow/glow?
+  //animated start/end popup
+  
+  // Long term
+  
   //pause button
   //how to play
   //options
   //themes
   //sounds
+  // easter egg for length of 1
   //player info tracking for "themeChievments"
   //Move images to imgur (or similar)
 
