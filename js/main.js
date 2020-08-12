@@ -17,7 +17,7 @@ const keys = {}
   // an array of player options for the game to check back on when needed. for example, index 5 could be eight a 0 or a 1, representing if the player wants to view the timer. render would then check this value
 
 /*------Variables--------*/
-let gameOver, mineTotal, started, timerInterval, seconds, flagTotal, winner, benMode
+let gameOver, mineTotal, started, timerInterval, seconds, flagTotal, winner, boom, groundZero
 
 
 /*------Cached Element References--------*/
@@ -34,6 +34,19 @@ const sizeInput = document.getElementById("boardSize")
 
 /*------Event Listeners--------*/
 gridAll.addEventListener('click', function(clicked){
+  let cell = cellData.find((arr) => arr.coord === clicked.target.id)
+  //check flag here?
+  if(!gameOver){
+    if (!started) {
+      firstClick(cell)
+    } else if (cell.beenClicked === false) {
+      uncliked(cell)
+    } else if (cell.beenClicked === true) {
+      clicked(cell)
+    }
+  }
+
+  /*-------pre-refactor code
   if(!gameOver){
     if (!started) {
       firstClick(clicked)
@@ -41,15 +54,19 @@ gridAll.addEventListener('click', function(clicked){
     checkMine(clicked)
     }
   }
+-----------*/
 });
 
 gridAll.addEventListener('contextmenu', function(clicked){
   clicked.preventDefault()
+
+  /*---------pre-refactored code
   if (!gameOver){
     if (started){
      flagMine(clicked)
     }
   }
+  ------*/
 })
 
 resetBtn.addEventListener('click', () => init())
@@ -68,6 +85,7 @@ startBtn.addEventListener('click', function(){
   welcome.style.top = '-1000px'
   buildABoard(parseInt(sizeInput.value))
 })
+
 // pause
 //options
 
@@ -83,11 +101,10 @@ document.addEventListener('keydown', function(e){
   } else if (e.key === 'd'){ scrollBy( 10,   0)
   }
 })
+
 document.addEventListener('keyup', function(e){
   keys[e.key] = false
 })
-
-
 
 /*------Tool Functions--------*/
 function tick(){
@@ -96,12 +113,12 @@ function tick(){
 }
 
 function startTimer(){
-  //  clearInterval(timerInterval)
   timerInterval = setInterval(tick, 1000)
 }
 
 rando = (arg) => (Math.random() < arg) ? 1 : 0;
 
+// don't need this in the new control flow?
 function findCell(input){
   let output = cellData.find((arr) => arr.coord === input.target.id)
   return output
@@ -215,21 +232,6 @@ function buildABoard(length){
     }
     alternate *= -1
   }
-  // console.log(gridAll.clientWidth)
-  // let gridWidth = gridAll.clientWidth
-  // console.log(gridWidth/2)
-  // window.scroll((gridWidth/6), 0)
-
-  // window.scrollTo(screen.width/2, 0)
-
-  // console.log('grid width:', gridAll.clientWidth)
-  // console.log('window widht:', window.innerWidth)
-  // let overflow = ((gridAll.clientWidth - window.innerWidth)/2)
-  // console.log('overflow', overflow)
-  // let overPercent = (overflow / gridAll.clientWidth)
-  // console.log('overflow percent', overPercent)
-  // let scrollAmount = (Math.floor(gridAll.clientWidth*overPercent))
-  // console.log('amount to scroll left', scrollAmount)
   window.scrollTo((Math.floor(gridAll.clientWidth*(((gridAll.clientWidth - window.innerWidth)/2) / gridAll.clientWidth))), 0)
   render()
 }
@@ -256,6 +258,17 @@ function init(){
   welcome.style.top = '250px'
 }
 
+function firstClick(cell){
+  //generate mines, work out adjMines, pass to unlicked
+}
+
+function unclicked(cell){
+  //mark cell as clicked
+    //if cell had a mine, set as groundZero and boom to true
+}
+
+
+/*-------- Working Code, but refactoring control flow
 function firstClick(clicked){
   let cell = findCell(clicked)
   let randFactor = .1
@@ -310,6 +323,10 @@ function checkMine(clicked){
 
 function checkWin(clicked){
   let cell = findCell(clicked)
+  // in progress code, needs more work
+    // if (cell.beenClicked === true){
+    //   clickFromClicked(clicked)
+    // }
   if (cell.beenClicked === false && cell.flag === 'none'){
     cell.beenClicked = true
   }
@@ -330,6 +347,20 @@ function checkWin(clicked){
   render()
 }
 
+// unused as of yet
+function clickFromClicked(clicked){
+  let cell = findCell(clicked)
+  let adjCells = listAdjCells(cell)
+  adjCells.forEach(function(obj){
+    if (obj.flag !== 'none'){
+      return
+    } else {
+      obj.beenClicked = true
+    }
+  })
+  checkWin(clicked)
+}
+
 function flagMine(clicked){
   let cell = findCell(clicked)
   if (!cell.beenClicked) {
@@ -345,6 +376,7 @@ function flagMine(clicked){
   }
   render()
 }
+------------------------*/
 
 function render(cell){
   if (winner){
@@ -400,9 +432,9 @@ function render(cell){
       }
     }
     //for debugging
-    // if (obj.hasMine === true) {
-    //   document.getElementById(`${obj.coord}`).innerText = `X`
-    // }
+    if (obj.hasMine === true) {
+      document.getElementById(`${obj.coord}`).innerText = `X`
+    }
   })
 }
 
