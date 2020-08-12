@@ -9,6 +9,7 @@ const checkAdjMath = [
   [-1, +1],
   [-1, -1]
 ]
+const keys = {}
 
 // playerInfo = {}
   // an object that stores player info, such as name, previous scores, and wins
@@ -68,7 +69,25 @@ startBtn.addEventListener('click', function(){
   buildABoard(parseInt(sizeInput.value))
 })
 // pause
-// options
+//options
+
+document.addEventListener('keydown', function(e){
+  keys[e.key] = true
+  if        (keys.w === true && keys.d === true){ scrollBy( 10,-10)
+  } else if (keys.s === true && keys.d === true){ scrollBy( 10, 10)
+  } else if (keys.a === true && keys.s === true){ scrollBy(-10, 10)
+  } else if (keys.a === true && keys.w === true){ scrollBy(-10,-10)
+  } else if (e.key === 'w'){ scrollBy(  0, -10) 
+  } else if (e.key === 'a'){ scrollBy(-10,   0)
+  } else if (e.key === 's'){ scrollBy(  0,  10)
+  } else if (e.key === 'd'){ scrollBy( 10,   0)
+  }
+})
+document.addEventListener('keyup', function(e){
+  keys[e.key] = false
+})
+
+
 
 /*------Tool Functions--------*/
 function tick(){
@@ -392,25 +411,36 @@ function render(cell){
 
 /*-----TO DO Short Term---------
 
-// Short Term
-  // reset button can ask if you want the same board or new options
-  // left click /  middle click on numbred tiled to hasClicked all around it, even if that hits a bomb
-  // add groundZero key to objects?
-    // or better, a variable that can be assign the coords of groundZero that render will reference
-    // have that be part of checkBomb
-    // old notes:
-    //click on numbered cell to click around it
-    //clickAround can do this, but at the moment it does not check for a lose state. I will need to refactor the control flow so that clickAround passes to hasMine?
-            //no, write new funtion when cliking on a cell that has adjMine > 0
-  // finalize style for default theme
-  //better colors
-  //hafta redo the images in photoshop, but that's play, I'll do it better this time
-  //change font
-  //add sounds?  
-  //hidden hex behind the board with shadow/glow?
-  //animated start/end popup
+- Short Term
+  - allow user to choose mine density
+    - will mean rejiggering the start window
+  - reset button can ask if you want the same board or new options
+    - if new options, just run reset button as it is, if same options pull from variables
+    - so that will mean putting the options into variables rather than passing them straight to the functions
+  - left click on numbred tiled to hasClicked all around it, even if that hits a bomb
+      - add groundZero key to objects?
+      - or better, a variable that can be assign the coords of groundZero that render will reference
+      - have that be part of checkBomb
+        - old notes:
+        - click on numbered cell to click around it
+          - lickAround can do this, but at the moment it does not check for a lose state. I will need to refactor the control flow so that clickAround passes to hasMine?
+        - no, write new funtion when cliking on a cell that has adjMine > 0
+  - thinking mouse cursor for mouse placement?
+  - finalize style for default theme
+    - better colors
+    - hafta redo the images in photoshop, but that's okay, I'll do it better this time
+    - change font
+    - add sounds?  
+    - hidden hex behind the board with shadow/glow?
+    - animated start/end popup
+  - how to play
+    - find all the mines without clicking on one
+    - click a cell to see what it contains
+    - numbers tell you how many adjacnt mines
+    - right click to flag cells to keep track of how many mines you have fount (plus you can't click on them!)
+    - left click on a numbered cell to open all the unflagged cells around it (be careful, if one of these is a mine you lose!)
   
-  // Long term
+// Long term
   
   //pause button
   //how to play

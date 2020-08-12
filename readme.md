@@ -39,7 +39,7 @@ When finished, the game will play much the same as the classic game Minesweeper
 
 ### Optimal Planned Features
 
-- If a player middle mouse clicks on a numbered cell, the game will clickCheck all adjacent unclicked and unflagged cells (which may end up clicking on a mine).
+- If a player left mouse clicks on a numbered cell, the game will clickCheck all adjacent unclicked and unflagged cells (which may end up clicking on a mine).
 - The game will have sounds when the player clicks on cells and especially when they click on a mine. An option in the options menu, or perhaps an icon in the main play space, will allow them to disable these sounds.
 - As the player plays, they will unlock themes for the board, such as a space scene or an island, that also include ambient sound and sounds specific to that theme.
 - Rather than being presented with three choices of board size, the player can choose a custom board size (within an upper and lower bound). The game will then render an appropriately sized board dynamically.
@@ -97,7 +97,7 @@ When finished, the game will play much the same as the classic game Minesweeper
 - **Half done** starting window so players can choose board size and mine density
 - **Done** justify UI to browswer window
 - "soft click" functionality, graphics
-- middle mouse button or click on a numbered cell to reveal all adjacent unflagged, unclicked cells (whether they have mines or not)
+- left click on a numbered cell to reveal all adjacent unflagged, unclicked cells (whether they have mines or not)
 - high score table
 - store user information
 - enhance UI
