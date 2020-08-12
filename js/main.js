@@ -18,6 +18,7 @@ const keys = {}
 
 /*------Variables--------*/
 let gameOver, mineTotal, started, timerInterval, seconds, flagTotal, winner, boom, groundZero
+// combine winner, boom, and gameOver to one variable with string or number that functions can check for game states?
 
 
 /*------Cached Element References--------*/
@@ -35,15 +36,17 @@ const sizeInput = document.getElementById("boardSize")
 /*------Event Listeners--------*/
 gridAll.addEventListener('click', function(clicked){
   let cell = cellData.find((arr) => arr.coord === clicked.target.id)
-  //check flag here?
   if(!gameOver){
     if (!started) {
       firstClick(cell)
-    } else if (cell.beenClicked === false) {
-      uncliked(cell)
-    } else if (cell.beenClicked === true) {
-      clicked(cell)
+    } else if (cell.flag === 'none'){
+      if (cell.beenClicked === false) {
+        unclicked(cell)
+      } else if (cell.beenClicked === true) {
+        alreadyClicked(cell)
+      }
     }
+    
   }
 
   /*-------pre-refactor code
@@ -59,14 +62,12 @@ gridAll.addEventListener('click', function(clicked){
 
 gridAll.addEventListener('contextmenu', function(clicked){
   clicked.preventDefault()
-
-  /*---------pre-refactored code
+  let cell = cellData.find((arr) => arr.coord === clicked.target.id)
   if (!gameOver){
     if (started){
-     flagMine(clicked)
+     flagMine(cell)
     }
   }
-  ------*/
 })
 
 resetBtn.addEventListener('click', () => init())
@@ -246,10 +247,13 @@ function init(){
   cellData = []
   gridAll.innerHTML = ''
   winner = false
+  boom = false
+  groundZero = ''
   box.innerHTML = ''
   box.style.top = '-100px'
   seconds = 0
   flagTotal = 0
+  mineTotal = 0
   clearInterval(timerInterval)
   started = false
   gameOver = false
@@ -260,11 +264,114 @@ function init(){
 
 function firstClick(cell){
   //generate mines, work out adjMines, pass to unlicked
+  let randFactor = .1
+  let adjCells = listAdjCells(cell)
+  adjCoords = adjCells.map(function(obj){
+    return obj.coord
+  })
+  adjCoords.push(cell.coord)
+  cellData.forEach(function(obj){
+    if (adjCoords.includes(obj.coord)){
+    } else {
+      if (rando(randFactor) === 1) {
+        obj.hasMine = true
+        randFactor = .1
+        mineTotal++
+      } else {
+        randFactor = randFactor + .05
+      }
+    }
+  })
+  cellData.forEach(function(obj){
+    let adjCells = listAdjCells(obj)
+    adjCells.forEach(function(arr){
+      if (arr.hasMine){
+        obj.adjMines++
+      }
+    })       
+  })
+  // cell.beenClicked = true     //
+  // if (cell.adjMines === 0){   //
+  //   clickAround(cell, 0)      //  Pass to checkMine instead, to mainant coltrol flow?
+  // }                           //
+  started = true
+  startTimer()
+  unclicked(cell)
 }
 
 function unclicked(cell){
   //mark cell as clicked
-    //if cell had a mine, set as groundZero and boom to true
+  cell.beenClicked = true
+  //pass cell to checkMine
+  checkMine(cell)
+  //if cell clicked has no adj mines, run checkAround
+  if (cell.adjMines === 0){
+    clickAround(cell, 0)
+  }
+  //pass to checkWin
+  checkWin(cell)
+}
+
+function alreadyClicked(cell){
+  //set all unclicked, unflagged cells around clicked cell to clicked
+  let adjCells = listAdjCells(cell)
+  adjCells.forEach(function(obj){
+    if (obj.beenClicked === false && obj.flag === 'none'){
+      obj.beenClicked = true
+      //while doing so, run checkMine
+      checkMine(obj)
+      if (obj.hasMine === true){
+        return
+      }
+      if (obj.adjMines === 0){
+        clickAround(obj, 0)
+      }
+    }
+  })
+  checkWin(cell)
+}
+
+function checkMine(cell){
+  //just checks for a mine on a clicked cell. if it sees one, it sets it to groundZero, sets boom to true and gameover to true
+  if (cell.hasMine === true){
+    groundZero = cell.coord
+    boom = true
+    gameOver = true
+    clearInterval(timerInterval)
+  }
+  //then the function that called it should resume. it will eventually pass to render, which will end the game
+}
+
+function flagMine(cell){
+  // if (!cell.beenClicked) {
+    if (cell.flag === 'none'){
+      cell.flag = 'flag'
+      flagTotal++
+    } else if (cell.flag === 'flag') {
+      cell.flag = 'maybeFlag'
+      flagTotal--
+    } else {
+      cell.flag = 'none'
+    }
+  // }
+  render(cell)
+}
+
+function checkWin(cell){
+  //runs the math on if the player has won. if true, set winner to true and gameover to true
+  let clickedTotal = 0                //
+  cellData.forEach(function(obj){     //
+    if (obj.beenClicked === true){    //  Convert to .reduce()?
+      clickedTotal++                  //
+    }                                 //
+  })
+  if (mineTotal + clickedTotal === cellData.length){
+    clearInterval(timerInterval)
+    winner = true
+    gameOver = true
+    clearInterval(timerInterval)
+  }
+  render(cell)
 }
 
 
@@ -377,7 +484,67 @@ function flagMine(clicked){
   render()
 }
 ------------------------*/
+function render(cell){
+  if (winner){
+    box.style.top = '250px'
+    box.innerHTML = `<p>Congratulations!</p><p>You found all ${mineTotal} mines in ${seconds} seconds!</p><p>Press Reset to play again.</p>`
+  }
+  timer.innerText = seconds
+  if (!started) {
+    mineCounter.innerText = `Click a cell to start!`
+    timer.innerText = '000'
+  } else {
+    mineCounter.innerText = `Mines Left: ${mineTotal - flagTotal}`
+    if (seconds < 10){
+      timer.innerText = `00${seconds}`
+    } else if (seconds < 100) {
+      timer.innerText = `0${seconds}`
+    } else {
+     timer.innerText = seconds
+    }
+  }
+  if (mineTotal - flagTotal < 0){
+    mineCounter.style.color = 'red'
+  } else (
+    mineCounter.style.color = defaultStatus
+  )
+  cellData.forEach(function(obj){
+    if (obj.beenClicked === false){
+      if (obj.flag === 'flag') {
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlag.png")'
+      } else if (obj.flag === 'maybeFlag'){
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMaybeFlag.png")'
+      } else {
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexBevel.png")'
+      }
+    } else {
+      document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlat.png")'
+      if (obj.adjMines > 0) {
+        document.getElementById(`${obj.coord}`).innerText = `${obj.adjMines}`
+      }
+    }
+    if (gameOver === true && winner === false){
+      if (obj.hasMine) {
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMine.png")'
+      }
+      if (obj.flag === 'flag' && obj.hasMine === false) {
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlagNotMine.png")'
+      }
+      if (obj.flag === 'flag' && obj.hasMine === true) {
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMineFlag.png")'
+      }
+      if (obj.coord === groundZero) {
+        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMineExploded.png")'
+      }
+    }
+    //for debugging
+    // if (obj.hasMine === true) {
+    //   document.getElementById(`${obj.coord}`).innerText = `X`
+    // }
+  })
+}
 
+/*----------old, but working, render--------
 function render(cell){
   if (winner){
     box.style.top = '250px'
@@ -437,7 +604,7 @@ function render(cell){
     }
   })
 }
-
+---------*/
 
 
 
