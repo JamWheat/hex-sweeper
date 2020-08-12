@@ -18,6 +18,7 @@ When finished, the game will play much the same as the classic game Minesweeper
 - CSS
 - HTML
 - Deployed via [surge.sh](surge.sh)
+- Nunito font, by Vernon Adams
 
 ### Wireframe mockup of player's view
 

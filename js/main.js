@@ -68,7 +68,7 @@ startBtn.addEventListener('click', function(){
     sizeInput.placeholder = 'numbers only'
     return
   }
-  if (parseInt(sizeInput.value) < 6 || parseInt(sizeInput.value) > 70 ) {
+  if (parseInt(sizeInput.value) < 3 || parseInt(sizeInput.value) > 70 ) {
     sizeInput.value = ''
     sizeInput.placeholder = '6 to 70'
     return
@@ -274,7 +274,8 @@ function firstClick(cell){
         randFactor = .1
         mineTotal++
       } else {
-        //increase in random factor = more mines?
+        //right now, player's mineDensity choice affects randIncreas
+        //would it make more sense to have it effect randFactor?
         randFactor = randFactor + randIncrease
       }
     }
@@ -356,118 +357,9 @@ function checkWin(cell){
   render(cell)
 }
 
-
-/*-------- Working Code, but refactoring control flow
-function firstClick(clicked){
-  let cell = findCell(clicked)
-  let randFactor = .1
-  mineTotal = 0
-  let adjCells = listAdjCells(cell)
-  adjCoords = adjCells.map(function(obj){
-    return obj.coord
-  })
-  adjCoords.push(cell.coord)
-  cellData.forEach(function(obj){
-    if (adjCoords.includes(obj.coord)){
-    } else {
-      if (rando(randFactor) === 1) {
-        obj.hasMine = true
-        randFactor = .1
-        mineTotal++
-      } else {
-        randFactor = randFactor + .05
-      }
-    }
-  })
-  cellData.forEach(function(obj){
-    let adjCells = listAdjCells(obj)
-    adjCells.forEach(function(arr){
-      if (arr.hasMine){
-        obj.adjMines++
-      }
-    })       
-  })
-  cell.beenClicked = true     //
-  if (cell.adjMines === 0){   //
-    clickAround(cell, 0)      //  Pass to checkMine instead, to mainant coltrol flow?
-  }                           //
-  started = true              //
-  startTimer()                //
-  render()                    //
-}
-
-function checkMine(clicked){
-  let cell = findCell(clicked)
-  if (cell.hasMine === true) {
-    if (cell.flag !== 'none'){
-      return
-    }
-    clearInterval(timerInterval)
-    gameOver = true
-    render(cell.coord)
-  } else {
-    checkWin(clicked)
-  }
-}
-
-function checkWin(clicked){
-  let cell = findCell(clicked)
-  // in progress code, needs more work
-    // if (cell.beenClicked === true){
-    //   clickFromClicked(clicked)
-    // }
-  if (cell.beenClicked === false && cell.flag === 'none'){
-    cell.beenClicked = true
-  }
-  if (cell.adjMines === 0){
-    clickAround(cell, 0)
-  }
-  let clickedTotal = 0                //
-  cellData.forEach(function(obj){     //
-    if (obj.beenClicked === true){    //  Convert to .reduce()?
-      clickedTotal++                  //
-    }                                 //
-  })
-  if (mineTotal + clickedTotal === cellData.length){
-    clearInterval(timerInterval)
-    winner = true
-    gameOver = true
-  }
-  render()
-}
-
-// unused as of yet
-function clickFromClicked(clicked){
-  let cell = findCell(clicked)
-  let adjCells = listAdjCells(cell)
-  adjCells.forEach(function(obj){
-    if (obj.flag !== 'none'){
-      return
-    } else {
-      obj.beenClicked = true
-    }
-  })
-  checkWin(clicked)
-}
-
-function flagMine(clicked){
-  let cell = findCell(clicked)
-  if (!cell.beenClicked) {
-    if (cell.flag === 'none'){
-      cell.flag = 'flag'
-      flagTotal++
-    } else if (cell.flag === 'flag') {
-      cell.flag = 'maybeFlag'
-      flagTotal--
-    } else {
-      cell.flag = 'none'
-    }
-  }
-  render()
-}
-------------------------*/
 function render(cell){
   if (winner){
+    console.log('hello')
     box.style.top = '250px'
     box.innerHTML = `<p>Congratulations!</p><p>You found all ${mineTotal} mines in ${seconds} seconds!</p><p>Press Reset to play again.</p>`
   }
@@ -526,95 +418,22 @@ function render(cell){
   })
 }
 
-/*----------old, but working, render--------
-function render(cell){
-  if (winner){
-    box.style.top = '250px'
-    box.innerHTML = `<p>Congratulations!</p><p>You found all ${mineTotal} mines in ${seconds} seconds!</p><p>Press Reset to play again.</p>`
-  }
-  timer.innerText = seconds
-  if (!started) {
-    mineCounter.innerText = `Click a cell to start!`
-    timer.innerText = '000'
-  } else {
-    mineCounter.innerText = `Mines Left: ${mineTotal - flagTotal}`
-    if (seconds < 10){
-      timer.innerText = `00${seconds}`
-    } else if (seconds < 100) {
-      timer.innerText = `0${seconds}`
-    } else {
-     timer.innerText = seconds
-    }
-  }
-  if (mineTotal - flagTotal < 0){
-    mineCounter.style.color = 'red'
-  } else (
-    mineCounter.style.color = defaultStatus
-  )
-  cellData.forEach(function(obj){
-    if (obj.beenClicked === false){
-      if (obj.flag === 'flag') {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlag.png")'
-      } else if (obj.flag === 'maybeFlag'){
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMaybeFlag.png")'
-      } else {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexBevel.png")'
-      }
-    } else {
-      document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlat.png")'
-      if (obj.adjMines > 0) {
-        document.getElementById(`${obj.coord}`).innerText = `${obj.adjMines}`
-      }
-    }
-    if (gameOver === true && winner === false){
-      if (obj.hasMine) {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMine.png")'
-      }
-      if (obj.flag === 'flag' && obj.hasMine === false) {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlagNotMine.png")'
-      }
-      if (obj.flag === 'flag' && obj.hasMine === true) {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMineFlag.png")'
-      }
-      if (obj.coord === cell) {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMineExploded.png")'
-      }
-    }
-    //for debugging
-    if (obj.hasMine === true) {
-      document.getElementById(`${obj.coord}`).innerText = `X`
-    }
-  })
-}
----------*/
-
-
-
 /*-----TO DO Short Term---------
 
 - Short Term
-  - allow user to choose mine density
-    - will mean rejiggering the start window
   - reset button can ask if you want the same board or new options
     - if new options, just run reset button as it is, if same options pull from variables
     - so that will mean putting the options into variables rather than passing them straight to the functions
-  - left click on numbred tiled to hasClicked all around it, even if that hits a bomb
-      - add groundZero key to objects?
-      - or better, a variable that can be assign the coords of groundZero that render will reference
-      - have that be part of checkBomb
-        - old notes:
-        - click on numbered cell to click around it
-          - lickAround can do this, but at the moment it does not check for a lose state. I will need to refactor the control flow so that clickAround passes to hasMine?
-        - no, write new funtion when cliking on a cell that has adjMine > 0
   - thinking mouse cursor for mouse placement?
   - finalize style for default theme
     - better colors
     - hafta redo the images in photoshop, but that's okay, I'll do it better this time
+    - shadow around title bar?
     - change font
     - add sounds?  
-    - hidden hex behind the board with shadow/glow?
     - animated start/end popup
   - how to play
+    - will need to photoshop some screen grabs
     - find all the mines without clicking on one
     - click a cell to see what it contains
     - numbers tell you how many adjacnt mines
@@ -624,7 +443,6 @@ function render(cell){
 // Long term
   
   //pause button
-  //how to play
   //options
   //themes
   //sounds
