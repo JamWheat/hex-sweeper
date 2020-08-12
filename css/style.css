@@ -1,5 +1,5 @@
 html {
-  box-sizing: border-box
+  box-sizing: border-box;
 }
  
 *,
@@ -20,6 +20,10 @@ body {
   margin: 30px;
   font-size: 2.4rem;
   height: 100vh;
+  /* width: 100vw */
+  height: 100%;
+  /* min-height: 100%; */
+    /* min-width: 100%; */
 }
 
 #window {
@@ -45,6 +49,7 @@ body {
 }
 
 header {
+  z-index: 5;
   position: fixed;
   display: flex;
   padding: 20px;
@@ -63,17 +68,18 @@ header {
 }
 
 #welcome {
+  z-index: 4;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   text-align: center;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  width: 300px;
+  position: fixed;
+  width: 400px;
   padding: 20px;
   top: 250px;
   left: 50%;
-  margin-left: -150px;
+  margin-left: -300px;
   background-color: #A0B7F6;
   font-weight: bold;
   color: #333950;
@@ -82,6 +88,62 @@ header {
   border-style: solid;
   border-color: #b4c6f5 #5b688d #3F4962 #5b688d;
   box-shadow: 0px 10px 10px rgba(44, 41, 41, 0.699);
+}
+
+.radio {
+  display: inline;
+  position: relative;
+  padding-left: 35px;
+  padding-right: 10px;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.radioBtn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #dfe3f5;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #333950;
+}
+
+.radio:hover input ~ .radioBtn {
+  background-color: #585e79;
+}
+
+.radio input:checked ~ .radioBtn {
+  background-color: #dfe3f5;
+}
+
+.radioBtn:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.radio input:checked ~ .radioBtn:after {
+  display: block;
+}
+
+.radio .radioBtn:after {
+  top: 3px;
+  left: 3px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #333950;
 }
 
 p {
@@ -130,6 +192,7 @@ button {
   font-weight: bold;
   padding: 7px 10px;
   border-width: 5px;
+  cursor: pointer;
   border-radius: 10px;
   color: #333950;
   background-color: #7F92C4;
@@ -140,6 +203,7 @@ button {
 #grid {
   display: grid;
   margin-top: 150px;
+  filter: drop-shadow(0px 0px 40px #212157) 
 }
 
 button:focus {

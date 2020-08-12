@@ -10,13 +10,38 @@
 <body>
   <div id="window"></div>
   <div id="welcome">
-    <p>Welcome!</p>
-    <p>How big a board would you like?</p>
-    <p class="note">from 6 to 70</p>
-    <input id="boardSize" type="text" placeholder="hexes to a side">
-    <p class="note">(note that larger board will take longer to place mines, please be patient)</p>
-    <br>
-    <button id="start">Let's go!</button>
+    <div>
+      <p>How big a board would you like?</p>
+      <p class="note">from 6 to 70</p>
+      <input id="boardSize" type="text" placeholder="hexes to a side">
+      <p class="note">(note that larger board will take longer to place mines, please be patient)</p>
+      <br>
+      <p>How many mines would you like?</p>
+      <br>
+
+      <label class="radio">Some
+        <input type="radio" checked="checked" name="mineInput" id="some">
+        <span class="radioBtn"></span>
+      </label>
+      <label class="radio">Lots
+        <input type="radio" name="mineInput" id="lots">
+        <span class="radioBtn"></span>
+      </label>
+      <label class="radio">Too many!
+        <input type="radio" name="mineInput" id="tons">
+        <span class="radioBtn"></span>
+      </label>
+
+
+
+      <!-- <div class="radios">
+        <div><input class="radioBtn" type="radio" id="some" name="mineDensity" value="some"><label for="some">Some</label></div>
+        <div><input class="radioBtn" type="radio" id="lots" name="mineDensity" value="lots"><label for="lots">Lots</label></div>
+        <div><input class="radioBtn" type="radio" id="many" name="mineDensity" value="many"><label for="many">Too many!</label></div>
+      </div> -->
+      <br>
+      <button id="start">Let's go!</button>
+    </div>
   </div>
   <header>
     <h1>Hex Sweeper</h1>

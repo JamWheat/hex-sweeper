@@ -73,6 +73,12 @@ startBtn.addEventListener('click', function(){
     sizeInput.placeholder = '6 to 70'
     return
   }
+  let mineInput = document.getElementsByName('mineInput')
+  for(let i = 0; i < mineInput.length; i++){
+    if (mineInput[i].checked) {
+      console.log(mineInput[i].id)
+    }
+  }
   welcome.style.top = '-1000px'
   buildABoard(parseInt(sizeInput.value))
 })
@@ -82,14 +88,14 @@ startBtn.addEventListener('click', function(){
 
 document.addEventListener('keydown', function(e){
   keys[e.key] = true
-  if        (keys.w === true && keys.d === true){ scrollBy( 10,-10)
-  } else if (keys.s === true && keys.d === true){ scrollBy( 10, 10)
-  } else if (keys.a === true && keys.s === true){ scrollBy(-10, 10)
-  } else if (keys.a === true && keys.w === true){ scrollBy(-10,-10)
-  } else if (e.key === 'w'){ scrollBy(  0, -10) 
-  } else if (e.key === 'a'){ scrollBy(-10,   0)
-  } else if (e.key === 's'){ scrollBy(  0,  10)
-  } else if (e.key === 'd'){ scrollBy( 10,   0)
+  if        (keys.w === true && keys.d === true){ scrollBy( 20,-20)
+  } else if (keys.s === true && keys.d === true){ scrollBy( 20, 20)
+  } else if (keys.a === true && keys.s === true){ scrollBy(-20, 20)
+  } else if (keys.a === true && keys.w === true){ scrollBy(-20,-20)
+  } else if (e.key === 'w'){ scrollBy(  0, -20) 
+  } else if (e.key === 'a'){ scrollBy(-20,   0)
+  } else if (e.key === 's'){ scrollBy(  0,  20)
+  } else if (e.key === 'd'){ scrollBy( 20,   0)
   }
 })
 
