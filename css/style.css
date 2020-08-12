@@ -17,83 +17,82 @@ body {
   background-color: #c7ccdd;
   color: #333950;
   font-family: 'Nunito', sans-serif;
-  /* font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: 'Nunito', sans-serif;
   margin: 30px;
   font-size: 2.4rem;
   height: 100vh;
-  /* width: 100vw */
-  /* height: 100%; */
-  /* min-height: 100%; */
-    /* min-width: 100%; */
 }
 
-#window {
+.window{
   z-index: 5;
   display: flex;
+  padding: 20px;
+  background: linear-gradient(180deg, #909fc5, #aabbe7);
+  font-weight: bold;
+  border-radius: 20px;
+  border: 5px;
+  border-style: solid;
+  border-color: #aebee9 #5b688d #3F4962 #5b688d;
+  box-shadow: 0px 5px 30px rgba(47, 47, 53, 0.5);
+}
+
+#welcome {
+  flex-direction: row;
+  position: fixed;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  padding: 20px;
+  top: 250px;
+  left: 50%;
+  margin-left: -200px;
+  background: linear-gradient(180deg, #8492b6, #aabbe7);
+  border-color: #a2b1da #5b688d #3F4962 #5b688d;
+}
+
+#win-win {
   flex-direction: column;
   text-align: center;
   justify-content: center;
   align-items: center;
   position: absolute;
   width: 300px;
-  padding: 20px;
   top: 250px;
   left: 50%;
   margin-left: -150px;
-  background: linear-gradient(180deg, #909fc5, #aabbe7);
-  font-weight: bold;
-  color: #333950;
-  border-radius: 20px;
-  border: 5px;
-  border-style: solid;
-  border-color: #aebee9 #5b688d #3F4962 #5b688d;
-  box-shadow: 0px 5px 30px rgba(47, 47, 53, 0.5);
 }
 
 header {
-  z-index: 5;
   position: fixed;
-  display: flex;
-  padding: 20px;
+  align-items: center;
   left: 50%;
   margin-left: -400px;
   gap: 20px;
   justify-content: space-between;
   width: 800px;
-  background: linear-gradient(180deg, #909fc5, #aabbe7);
-  align-items: center;
-  font-weight: bold;
-  border-radius: 20px;
-  border: 5px;
-  border-style: solid;
-  border-color: #aebee9 #5b688d #3F4962 #5b688d;
-  box-shadow: 0px 5px 30px rgba(47, 47, 53, 0.5);
 }
 
-
-
-#welcome {
-  z-index: 4;
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  width: 400px;
-  padding: 20px;
-  top: 250px;
+#how-to-play{
+  display: grid;
+  gap: 5px;
+  grid-template-rows: auto 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  position: absolute;
+  width: 800px;
   left: 50%;
-  margin-left: -200px;
-  background: linear-gradient(180deg, #909fc5, #aabbe7);
-  font-weight: bold;
-  color: #333950;
-  border-radius: 20px;
-  border: 5px;
-  border-style: solid;
-  border-color: #aebee9 #5b688d #3F4962 #5b688d;
-  box-shadow: 0px 5px 30px rgba(44, 41, 41, 0.5);
+  margin-left: -400px;
+}
+
+.help-wide{
+  text-align: center;
+  grid-column: 1/3;
+}
+
+.help-wide h3 {
+  margin: 0;
 }
 
 .radio {
@@ -126,7 +125,7 @@ header {
 }
 
 .radio:hover input ~ .radioBtn {
-  background-color: #585e79;
+  background-color: #a3a7b9;
 }
 
 .radio input:checked ~ .radioBtn {
@@ -162,6 +161,8 @@ p.note {
 
 input {
   border-radius: 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-family: 'Nunito', sans-serif;
   font-weight: bold;
   width: 200px;
@@ -169,7 +170,7 @@ input {
   border: 5px;
   padding: 10px;
   color: #333950;
-  background-color: #c4cadf;
+  background: linear-gradient(180deg, #afb4c7, #c4cadf) #c4cadf;
   text-align: center;
   font-size: 2.4rem;
   border-style: solid;
@@ -192,6 +193,8 @@ container {
 }
 
 button {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-family: 'Nunito', sans-serif;
   font-size: 2.4rem;
   font-weight: bold;

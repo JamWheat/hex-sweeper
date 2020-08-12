@@ -9,13 +9,13 @@
   <title>Hex Sweeper</title>
 </head>
 <body>
-  <div id="window"></div>
-  <div id="welcome">
+  <div id="win-win" class="window"></div>
+  <div id="welcome" class="window">
     <div>
       <p>How big a board would you like?</p>
       <p class="note">from 6 to 70</p>
       <input id="boardSize" type="text" placeholder="hexes to a side">
-      <p class="note">(note that larger board will take longer to place mines, please be patient)</p>
+      <p class="note">(note that very large boards will take longer to place mines after your first click)</p>
       <p>How many mines would you like?</p>
       <label class="radio">Some
         <input type="radio" checked="checked" name="mineInput" id=".05">
@@ -33,7 +33,7 @@
       <button id="start">Let's go!</button>
     </div>
   </div>
-  <header>
+  <header class="window">
     <h1>Hex Sweeper</h1>
     <div id="mine-counter"></div>
     <div id="timer"></div>
@@ -43,5 +43,11 @@
     <grid id="grid">
     </grid>
   </container>
+  <div id="how-to-play" class="window">
+    <div class="help-wide"><h3>How to Play</h2><p>The object of Hex Sweeper is to open all off the empty cells without hitting any mines. Hitting just one mine ends the game!</p></div>
+    <div>Left click on a cell to open it.</div><div>test</div>
+    <div>The number on an empty cell tells you how many mines are adjecent to that cell.</div><div>Use that information to figure out where the mines are.</div>
+    <div>Right click on a closed cell to put a flag on it</div><div>test</div>
+  </div>
 </body>
 </html>

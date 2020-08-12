@@ -26,7 +26,7 @@ const gridAll = document.getElementById("grid")
 const timer = document.getElementById("timer")
 const mineCounter = document.getElementById('mine-counter')
 const resetBtn = document.getElementById('reset-button')
-const box = document.getElementById("window")
+const winWin = document.getElementById("win-win")
 const welcome = document.getElementById("welcome")
 const startBtn = document.getElementById("start")
 const sizeInput = document.getElementById("boardSize")
@@ -68,7 +68,7 @@ startBtn.addEventListener('click', function(){
     sizeInput.placeholder = 'numbers only'
     return
   }
-  if (parseInt(sizeInput.value) < 3 || parseInt(sizeInput.value) > 70 ) {
+  if (parseInt(sizeInput.value) < 6 || parseInt(sizeInput.value) > 70 ) {
     sizeInput.value = ''
     sizeInput.placeholder = '6 to 70'
     return
@@ -246,8 +246,8 @@ function init(){
   winner = false
   boom = false
   groundZero = ''
-  box.innerHTML = ''
-  box.style.top = '-100px'
+  winWin.innerHTML = ''
+  winWin.style.top = '-100px'
   seconds = 0
   flagTotal = 0
   mineTotal = 0
@@ -360,8 +360,8 @@ function checkWin(cell){
 function render(cell){
   if (winner){
     console.log('hello')
-    box.style.top = '250px'
-    box.innerHTML = `<p>Congratulations!</p><p>You found all ${mineTotal} mines in ${seconds} seconds!</p><p>Press Reset to play again.</p>`
+    winWin.style.top = '250px'
+    winWin.innerHTML = `<p>Congratulations!</p><p>You found all ${mineTotal} mines in ${seconds} seconds!</p><p>Press Reset to play again.</p>`
   }
   timer.innerText = seconds
   if (!started) {

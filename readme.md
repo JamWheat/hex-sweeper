@@ -78,9 +78,9 @@ When finished, the game will play much the same as the classic game Minesweeper
 
 #### Phase Two - Build it out into minimal game
 
-- **done** build the base UI
-  - **done** remaining mine counter
-  - **done** timer
+- **Done** build the base UI
+  - **Done** remaining mine counter
+  - **Done** timer
   - **Done** reset button
 - **Done** disable clickability after first click
 - **Done** code right click functions
@@ -105,7 +105,7 @@ When finished, the game will play much the same as the classic game Minesweeper
   - hide timer
   - theme menu
   - disable sounds
-- make it look pretty
+- **Done** make it look pretty
 - make it look pretty again and again with themes
 - add sounds
 - "soft click" functionality, graphics
