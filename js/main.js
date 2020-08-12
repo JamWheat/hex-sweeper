@@ -48,16 +48,6 @@ gridAll.addEventListener('click', function(clicked){
     }
     
   }
-
-  /*-------pre-refactor code
-  if(!gameOver){
-    if (!started) {
-      firstClick(clicked)
-    } else {
-    checkMine(clicked)
-    }
-  }
------------*/
 });
 
 gridAll.addEventListener('contextmenu', function(clicked){
@@ -78,9 +68,9 @@ startBtn.addEventListener('click', function(){
     sizeInput.placeholder = 'numbers only'
     return
   }
-  if (parseInt(sizeInput.value) < 2 || parseInt(sizeInput.value) > 70 ) {
+  if (parseInt(sizeInput.value) < 6 || parseInt(sizeInput.value) > 70 ) {
     sizeInput.value = ''
-    sizeInput.placeholder = '2 to 70'
+    sizeInput.placeholder = '6 to 70'
     return
   }
   welcome.style.top = '-1000px'

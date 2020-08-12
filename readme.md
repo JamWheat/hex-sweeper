@@ -95,9 +95,9 @@ When finished, the game will play much the same as the classic game Minesweeper
 - **Done!** code dynamic board generation
 - **Done** code spreadFromEmpty functionality
 - **Half done** starting window so players can choose board size and mine density
-- **Done** justify UI to browswer window
-- "soft click" functionality, graphics
-- left click on a numbered cell to reveal all adjacent unflagged, unclicked cells (whether they have mines or not)
+- **Done** justify UI to browser window
+- **Done** left click on a numbered cell to reveal all adjacent unflagged, unclicked cells (whether they have mines or not)
+- > Now it feels like a real minesweeper!
 - high score table
 - store user information
 - enhance UI
@@ -107,6 +107,9 @@ When finished, the game will play much the same as the classic game Minesweeper
 - make it look pretty
 - make it look pretty again and again with themes
 - add sounds
-- allowing scollability?
-  - grab and scoll?
+- "soft click" functionality, graphics
+  - >The browser already takes care of the functionality (mostly, the console does throw up an error that has me mildly worried).
+- **Done** allowing scollability?
+  - > Yeah, duh, a person can just scroll the browser window with the arrow keys like always (though I did add wasd controls as a quality of life improvement).
+- grab and scroll?
 - allowing **_zoomability???_**
