@@ -17,7 +17,7 @@ const keys = {}
   // an array of player options for the game to check back on when needed. for example, index 5 could be eight a 0 or a 1, representing if the player wants to view the timer. render would then check this value
 
 /*------Variables--------*/
-let gameOver, mineTotal, started, timerInterval, seconds, flagTotal, winner, boom, groundZero
+let gameOver, mineTotal, started, timerInterval, seconds, flagTotal, winner, boom, groundZero, randIncrease, boardSize
 // combine winner, boom, and gameOver to one variable with string or number that functions can check for game states?
 
 
@@ -76,11 +76,12 @@ startBtn.addEventListener('click', function(){
   let mineInput = document.getElementsByName('mineInput')
   for(let i = 0; i < mineInput.length; i++){
     if (mineInput[i].checked) {
-      console.log(mineInput[i].id)
+      randIncrease = parseFloat(mineInput[i].id)
     }
   }
+  boardSize = parseInt(sizeInput.value)
   welcome.style.top = '-1000px'
-  buildABoard(parseInt(sizeInput.value))
+  buildABoard(parseInt(boardSize))
 })
 
 // pause
@@ -259,7 +260,6 @@ function init(){
 }
 
 function firstClick(cell){
-  //generate mines, work out adjMines, pass to unlicked
   let randFactor = .1
   let adjCells = listAdjCells(cell)
   adjCoords = adjCells.map(function(obj){
@@ -274,7 +274,8 @@ function firstClick(cell){
         randFactor = .1
         mineTotal++
       } else {
-        randFactor = randFactor + .05
+        //increase in random factor = more mines?
+        randFactor = randFactor + randIncrease
       }
     }
   })
@@ -286,35 +287,25 @@ function firstClick(cell){
       }
     })       
   })
-  // cell.beenClicked = true     //
-  // if (cell.adjMines === 0){   //
-  //   clickAround(cell, 0)      //  Pass to checkMine instead, to mainant coltrol flow?
-  // }                           //
   started = true
   startTimer()
   unclicked(cell)
 }
 
 function unclicked(cell){
-  //mark cell as clicked
   cell.beenClicked = true
-  //pass cell to checkMine
   checkMine(cell)
-  //if cell clicked has no adj mines, run checkAround
   if (cell.adjMines === 0){
     clickAround(cell, 0)
   }
-  //pass to checkWin
   checkWin(cell)
 }
 
 function alreadyClicked(cell){
-  //set all unclicked, unflagged cells around clicked cell to clicked
   let adjCells = listAdjCells(cell)
   adjCells.forEach(function(obj){
     if (obj.beenClicked === false && obj.flag === 'none'){
       obj.beenClicked = true
-      //while doing so, run checkMine
       checkMine(obj)
       if (obj.hasMine === true){
         return
@@ -328,18 +319,15 @@ function alreadyClicked(cell){
 }
 
 function checkMine(cell){
-  //just checks for a mine on a clicked cell. if it sees one, it sets it to groundZero, sets boom to true and gameover to true
   if (cell.hasMine === true){
     groundZero = cell.coord
     boom = true
     gameOver = true
     clearInterval(timerInterval)
   }
-  //then the function that called it should resume. it will eventually pass to render, which will end the game
 }
 
 function flagMine(cell){
-  // if (!cell.beenClicked) {
     if (cell.flag === 'none'){
       cell.flag = 'flag'
       flagTotal++
@@ -349,12 +337,10 @@ function flagMine(cell){
     } else {
       cell.flag = 'none'
     }
-  // }
   render(cell)
 }
 
 function checkWin(cell){
-  //runs the math on if the player has won. if true, set winner to true and gameover to true
   let clickedTotal = 0                //
   cellData.forEach(function(obj){     //
     if (obj.beenClicked === true){    //  Convert to .reduce()?

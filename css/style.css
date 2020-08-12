@@ -79,7 +79,7 @@ header {
   padding: 20px;
   top: 250px;
   left: 50%;
-  margin-left: -300px;
+  margin-left: -200px;
   background-color: #A0B7F6;
   font-weight: bold;
   color: #333950;
@@ -164,14 +164,14 @@ input {
   border: 5px;
   padding: 10px;
   color: #333950;
-  background-color: #97aad4;
+  background-color: #b8c8eb;
   text-align: center;
   font-size: 2.4rem;
   border-style: solid;
   border-color:   #475370 #5b688d #acbff0 #5b688d;
 }
 
-::placeholder {
+input::placeholder {
   color: #7f828d;
 }
 
