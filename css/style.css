@@ -23,6 +23,8 @@ body {
   margin: 30px;
   font-size: 2.4rem;
   height: 100vh;
+  --color: #333950;
+  --red: #8d2c2c;
   --window-back: linear-gradient(180deg, #808eb1, #aabbe7);
   --window-back-alt: linear-gradient(180deg, #8492b6, #aabbe7);
   --window-border: #aebee9 #5b688d #3F4962 #5b688d;
@@ -30,22 +32,60 @@ body {
   --hr-scroll-color: #606886;
   --help-exit-bg: #909fc5;
   --help-exit-border: #5b688d;
+  --radio-bg: #dfe3f5;
+  --radio-border: #333950;
+  --radio-hover: #a3a7b9;
+  --radio-selected: #333950;
+  --input-bg: linear-gradient(180deg, #939ebb, #c4cadf);
+  --input-border: #475370 #5b688d #acbff0 #5b688d;
+  --input-placeholder: #7f828d;
+  --button-bg: linear-gradient(180deg, #6c7daa, #889dd3);
+  --button-border: #9fadd3 #5b688d #3F4962 #5b688d;
+  --button-hover-color: #14161d;
+  --button-hover-bg: linear-gradient(180deg, #58668d, #93a9e2);
   --grid-glow: drop-shadow(0px 0px 50px #213457);
+  --cell-hexFlag: url("../images/hexFlag.png");
+  --cell-hexMaybeFlag: url("../images/hexMaybeFlag.png");
   --cell-hexBevel: url("../images/hexBevel.png");
+  --cell-hexFlat: url("../images/hexFlat.png");
+  --cell-hexMine: url("../images/hexMine.png");
+  --cell-hexFlagNotMine: url("../images/hexFlagNotMine.png");
+  --cell-hexMineFlag: url("../images/hexMineFlag.png");
+  --cell-hexMineExploded: url("../images/hexMineExploded.png");
 }
 
 body.dark {
   background: radial-gradient(#545969, #0d0e16);
   color: #96a3d8;
+  --color: #96a3d8;
+  --red: #db5f5f;
   --window-back: linear-gradient(180deg, #2E3D63, #4a6097);
   --window-back-alt: linear-gradient(180deg, #2E3D63, #4a6097);
   --window-border: #6967b4 #3e3161 #211e33 #3e3161;
   --window-shadow: 0px 0px 50px #9c77a5;
   --hr-scroll-color: #867bac;
   --help-exit-bg: #2E3D63;
-  --help-exit-border: #5a5897;
+  --help-exit-border: #6967b4 #3e3161 #3e3161 #6967b4;
+  --radio-bg: #5b72ad00;
+  --radio-border: #96a3d8;
+  --radio-hover: #8e94af;
+  --radio-selected: #96a3d8;
+  --input-bg: linear-gradient(0deg, #666c80, #2e314b);
+  --input-border: #211e33 #3e3161 #6967b4 #3e3161;
+  --input-placeholder: #959bbe9f;
+  --button-bg: linear-gradient(180deg, #2d3c61, #4f6499);
+  --button-border: #6967b4 #3e3161 #211e33 #3e3161;
+  --button-hover-color: #abb7e7;
+  --button-hover-bg: linear-gradient(180deg, #151c30, #5d73aa);
   --grid-glow: drop-shadow(0px 0px 50px #9c77a5);
+  --cell-hexFlag: url("../images/hexFlagD.png");
+  --cell-hexMaybeFlag: url("../images/hexMaybeFlagD.png");
   --cell-hexBevel: url("../images/hexBevelD.png");
+  --cell-hexFlat: url("../images/hexFlatD.png");
+  --cell-hexMine: url("../images/hexMineD.png");
+  --cell-hexFlagNotMine: url("../images/hexFlagNotMineD.png");
+  --cell-hexMineFlag: url("../images/hexMineFlagD.png");
+  --cell-hexMineExploded: url("../images/hexMineExplodedD.png");
 }
 
 #dark-light {
@@ -53,6 +93,7 @@ body.dark {
   position: fixed;
   top: 30px;
   left: 30px;
+  box-shadow: var(--window-shadow);
 }
 
 .window{
@@ -142,6 +183,7 @@ header {
   position: fixed;
   top: 30px;
   right: 30px;
+  box-shadow: var(--window-shadow);
 }
 
 .help-center h2 {
@@ -214,18 +256,18 @@ header {
   left: 0;
   height: 25px;
   width: 25px;
-  background-color: #dfe3f5;
+  background-color: var(--radio-bg);
   border-radius: 50%;
   border-style: solid;
-  border-color: #333950;
+  border-color: var(--radio-border);
 }
 
 .radio:hover input ~ .radioBtn {
-  background-color: #a3a7b9;
+  background-color: var(--radio-hover);
 }
 
 .radio input:checked ~ .radioBtn {
-  background-color: #dfe3f5;
+  background-color: var(--radio-bg);
 }
 
 .radioBtn:after {
@@ -244,7 +286,7 @@ header {
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: #333950;
+  background: var(--radio-selected);
 }
 
 p {
@@ -265,16 +307,16 @@ input {
   outline:0;
   border: 5px;
   padding: 10px;
-  color: #333950;
-  background: linear-gradient(180deg, #afb4c7, #c4cadf) #c4cadf;
+  color: var(--color);
+  background: var(--input-bg);
   text-align: center;
   font-size: 2.4rem;
   border-style: solid;
-  border-color:   #475370 #5b688d #acbff0 #5b688d;
+  border-color: var(--input-border);
 }
 
 input::placeholder {
-  color: #7f828d;
+  color: var(--input-placeholder);
 }
 
 h1 {
@@ -298,15 +340,15 @@ button {
   border-width: 5px;
   cursor: pointer;
   border-radius: 10px;
-  color: #333950;
-  background: linear-gradient(180deg, #6c7daa, #889dd3);
+  color: var(--color);
+  background: var(--button-bg);
   border-style: solid;
-  border-color: #9fadd3 #5b688d #3F4962 #5b688d;
+  border-color: var(--button-border);
 }
 
 button:hover {
-  color: #14161d;
-  background: linear-gradient(180deg, #58668d, #93a9e2);
+  color: var(--button-hover-color);
+  background: var(--button-hover-bg);
 }
 
 #grid {
@@ -324,9 +366,8 @@ button.cellBtn{
   height: 50px;
   width: 50px;
   border-radius: 100%;
-  border-color: #333950;
   border-style: solid;
-  color: #333950;
+  color: var(--color);
   font-size: 2.4rem;
   font-weight: bold;
   background: #ffffff00;
@@ -338,20 +379,41 @@ cell {
   align-items: center;
 }
 
-cell.unclicked {
-  background-image: var(--cell-hexBevel);
-}
-
-cell.clicked {
-  background-image: url("../images/hexFlat.png");
-}
 
 cell.flag {
-  background-image: url("../images/hexFlag.png");
+  background-image: var(--cell-hexFlag);
 }
 
 cell.maybeFlag {
-  background-image: url("../images/hexMaybeFlag.png");
+  background-image: var(--cell-hexMaybeFlag);
+}
+
+cell.bevel {
+  background-image: var(--cell-hexBevel);
+}
+
+cell.flat {
+  background-image: var(--cell-hexFlat);
+}
+
+cell.mine {
+  background-image: var(--cell-hexMine);
+}
+
+cell.flagNotMine {
+  background-image: var(--cell-hexFlagNotMine);
+}
+
+cell.mineFlag {
+  background-image: var(--cell-hexFlag);
+}
+
+cell.mineExploded {
+  background-image: var(--cell-hexMineExploded);
+}
+
+.red {
+  color: var(--red)
 }
 
 @media only screen and (max-width: 1300px) {

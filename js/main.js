@@ -389,7 +389,6 @@ function render(cell){
     mineCounter.innerText = 'mines left: 0'
     winWin.innerHTML = `<p>Congratulations!</p><p>With a grid size of ${boardSize} you found all ${mineTotal} mines in ${seconds} seconds!</p><p>Press Reset to play again.</p>`
   }
-  // timer.innerText = seconds
   if (!started) {
     mineCounter.innerText = `Click a cell to start!`
   } else {
@@ -403,37 +402,41 @@ function render(cell){
     }
   }
   if (mineTotal - flagTotal < 0){
-    mineCounter.style.color = 'red'
+    mineCounter.className = 'red'
   } else (
-    mineCounter.style.color = defaultStatus
+    mineCounter.className = ''
   )
   cellData.forEach(function(obj){
     if (obj.beenClicked === false){
       if (obj.flag === 'flag') {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlag.png")'
+        document.getElementById(`${obj.coord}`).parentElement.className = 'flag'
       } else if (obj.flag === 'maybeFlag'){
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMaybeFlag.png")'
+        document.getElementById(`${obj.coord}`).parentElement.className = 'maybeFlag'
       } else {
-        document.getElementById(`${obj.coord}`).parentElement.className = "unclicked"
+        document.getElementById(`${obj.coord}`).parentElement.className = 'bevel'
       }
     } else {
-      document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlat.png")'
+      document.getElementById(`${obj.coord}`).parentElement.className = 'flat'
       if (obj.adjMines > 0) {
         document.getElementById(`${obj.coord}`).innerText = `${obj.adjMines}`
       }
     }
     if (gameOver === true && winner === false){
+      timer.innerText = ''
+      mineCounter.className = 'red'
+      mineCounter.innerHTML = 'BOOOM! You hit a mine.<br>Hit Reset to try again!'
+
       if (obj.hasMine) {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMine.png")'
+        document.getElementById(`${obj.coord}`).parentElement.className = 'mine'
       }
       if (obj.flag === 'flag' && obj.hasMine === false) {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlagNotMine.png")'
+        document.getElementById(`${obj.coord}`).parentElement.className = 'flagNotMine'
       }
       if (obj.flag === 'flag' && obj.hasMine === true) {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMineFlag.png")'
+        document.getElementById(`${obj.coord}`).parentElement.className = 'mineFlag'
       }
       if (obj.coord === groundZero) {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMineExploded.png")'
+        document.getElementById(`${obj.coord}`).parentElement.className = 'mineExploded'
       }
     }
     //for debugging
@@ -443,37 +446,16 @@ function render(cell){
   })
 }
 
-/*-----TO DO Short Term---------
+/*-----TO DO---------
 
 - Short Term
-  - reset button can ask if you want the same board or new options
-    - if new options, just run reset button as it is, if same options pull from variables
-    - so that will mean putting the options into variables rather than passing them straight to the functions
   - thinking mouse cursor for mouse placement?
-  - finalize style for default theme
-    - better colors
-    - hafta redo the images in photoshop, but that's okay, I'll do it better this time
-    - shadow around title bar?
-    - change font
-    - add sounds?  
-    - animated start/end popup
-  - how to play
-    - will need to photoshop some screen grabs
-    - find all the mines without clicking on one
-    - click a cell to see what it contains
-    - numbers tell you how many adjacnt mines
-    - right click to flag cells to keep track of how many mines you have fount (plus you can't click on them!)
-    - left click on a numbered cell to open all the unflagged cells around it (be careful, if one of these is a mine you lose!)
-  
-// Long term
-  
-  //pause button
-  //options
-  //themes
-  //sounds
-  // easter egg for length of 1
-  //player info tracking for "themeChievments"
-  //Move images to imgur (or similar)
-
+  - add sounds
+  - pause button
+  - options
+  - themes
+  - sounds
+  - player info tracking for "themeChievments"
+  - Move images to imgur (or similar)
 
 --------------------------*/
