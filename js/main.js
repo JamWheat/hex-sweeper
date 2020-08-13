@@ -62,7 +62,11 @@ gridAll.addEventListener('contextmenu', function(clicked){
   }
 })
 
-resetBtn.addEventListener('click', () => init())
+resetBtn.addEventListener('click', function(){
+  welcome.style.top = '250px'
+  setTimeout(function(){ init() }, 750);
+  
+}) 
 
 startBtn.addEventListener('click', function(){
   if (isNaN(parseInt(sizeInput.value)) === true){
@@ -263,9 +267,10 @@ function init(){
   clearInterval(timerInterval)
   started = false
   gameOver = false
-  mineCounter.innerText = ''
-  timer.innerText = ''
-  welcome.style.top = '250px'
+  mineCounter.style.color = 'rgba(51, 57, 80, 00)'
+  timer.style.color = 'rgba(51, 57, 80, 00)'
+  // mineCounter.innerText = ''
+  // timer.innerText = ''
 }
 
 function firstClick(cell){
@@ -368,7 +373,6 @@ function checkWin(cell){
 
 function render(cell){
   if (winner){
-    console.log('hello')
     winWin.style.top = '250px'
     winWin.innerHTML = `<p>Congratulations!</p><p>You found all ${mineTotal} mines in ${seconds} seconds!</p><p>Press Reset to play again.</p>`
   }
@@ -376,6 +380,8 @@ function render(cell){
   if (!started) {
     mineCounter.innerText = `Click a cell to start!`
     timer.innerText = '000'
+    timer.style.color = 'rgba(51, 57, 80, 100)'
+    mineCounter.style.color = 'rgba(51, 57, 80, 100)'
   } else {
     mineCounter.innerText = `Mines Left: ${mineTotal - flagTotal}`
     if (seconds < 10){
@@ -389,7 +395,7 @@ function render(cell){
   if (mineTotal - flagTotal < 0){
     mineCounter.style.color = 'red'
   } else (
-    mineCounter.style.color = defaultStatus
+    mineCounter.style.color = 'rgba(51, 57, 80, 100)'
   )
   cellData.forEach(function(obj){
     if (obj.beenClicked === false){

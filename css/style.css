@@ -36,6 +36,8 @@ body {
   border-style: solid;
   border-color: #aebee9 #5b688d #3F4962 #5b688d;
   box-shadow: 0px 5px 30px rgba(47, 47, 53, 0.5);
+
+  transition: top .75s ease;
 }
 
 #welcome {
@@ -63,6 +65,19 @@ body {
   top: 250px;
   left: 50%;
   margin-left: -150px;
+  top: -400px;
+}
+
+#mine-counter {
+  color: rgba(51, 57, 80, 0);
+  transition: color .5s linear;
+}
+
+
+
+#timer {
+  color: rgba(51, 57, 80, 0);
+  transition: color .5s linear;
 }
 
 header {
@@ -84,7 +99,6 @@ header {
   height: 600px;
   left: 50%;
   background: linear-gradient(180deg, #8492b6, #aabbe7);
-
   margin-left: -400px;
 }
 
@@ -132,6 +146,13 @@ header {
 #how-to-play img {
   margin-left: 5px;
   margin-right: 20px;
+  float: left;
+}
+
+#how-to-play img.righty {
+  margin-left: 20px;
+  margin-right: 5px;
+  float: right;
 }
 
 #how-to-play::-webkit-scrollbar-track
