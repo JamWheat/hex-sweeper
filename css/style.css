@@ -23,20 +23,48 @@ body {
   margin: 30px;
   font-size: 2.4rem;
   height: 100vh;
+  --window-back: linear-gradient(180deg, #808eb1, #aabbe7);
+  --window-back-alt: linear-gradient(180deg, #8492b6, #aabbe7);
+  --window-border: #aebee9 #5b688d #3F4962 #5b688d;
+  --window-shadow: 0px 5px 30px rgba(47, 47, 53, 0.5);
+  --hr-scroll-color: #606886;
+  --help-exit-bg: #909fc5;
+  --help-exit-border: #5b688d;
+  --grid-glow: drop-shadow(0px 0px 50px #213457);
+  --cell-hexBevel: url("../images/hexBevel.png");
+}
+
+body.dark {
+  background: radial-gradient(#545969, #0d0e16);
+  color: #96a3d8;
+  --window-back: linear-gradient(180deg, #2E3D63, #4a6097);
+  --window-back-alt: linear-gradient(180deg, #2E3D63, #4a6097);
+  --window-border: #6967b4 #3e3161 #211e33 #3e3161;
+  --window-shadow: 0px 0px 50px #9c77a5;
+  --hr-scroll-color: #867bac;
+  --help-exit-bg: #2E3D63;
+  --help-exit-border: #5a5897;
+  --grid-glow: drop-shadow(0px 0px 50px #9c77a5);
+  --cell-hexBevel: url("../images/hexBevelD.png");
+}
+
+#dark-light {
+  position: fixed;
+  top: 30px;
+  left: 30px;
 }
 
 .window{
   z-index: 5;
   display: flex;
   padding: 20px;
-  background: linear-gradient(180deg, #909fc5, #aabbe7);
+  background: var(--window-back);
   font-weight: bold;
   border-radius: 20px;
   border: 5px;
   border-style: solid;
-  border-color: #aebee9 #5b688d #3F4962 #5b688d;
-  box-shadow: 0px 5px 30px rgba(47, 47, 53, 0.5);
-
+  border-color: var(--window-border);
+  box-shadow: var(--window-shadow);
   transition: top .75s ease;
 }
 
@@ -51,8 +79,8 @@ body {
   top: 250px;
   left: 50%;
   margin-left: -200px;
-  background: linear-gradient(180deg, #8492b6, #aabbe7);
-  border-color: #a2b1da #5b688d #3F4962 #5b688d;
+  background: var(--window-back-alt);
+  border-color: var(--window-border)
 }
 
 #win-win {
@@ -72,8 +100,6 @@ body {
   color: rgba(51, 57, 80, 0);
   transition: color .5s linear;
 }
-
-
 
 #timer {
   color: rgba(51, 57, 80, 0);
@@ -98,18 +124,18 @@ header {
   width: 800px;
   height: 600px;
   left: 50%;
-  background: linear-gradient(180deg, #8492b6, #aabbe7);
+  background: var(--window-back-alt);
   margin-left: -400px;
 }
 
 #helping button {
   position: absolute;
-  background: #909fc5;
+  background: var(--help-exit-bg);
   height: 50px;
   width: 50px;
   padding: 0;
   border-radius: 25px;
-  border-color: #5b688d;
+  border-color: var(--help-exit-border);
   right: -25px;
   top: -25px;
 }
@@ -139,7 +165,7 @@ header {
   border-style: solid;
   border-width: 3px;
   border-radius: 5px;
-  border-color: #606886;
+  border-color: var(--hr-scroll-color);
   width: 500px;
 }
 
@@ -170,7 +196,7 @@ header {
 #how-to-play::-webkit-scrollbar-thumb
 {
     border-radius: 10px;
-    background-color: #717ea1;
+    background-color: var(--hr-scroll-color);
 }
 
 
@@ -295,7 +321,8 @@ button:hover {
 #grid {
   display: grid;
   margin-top: 150px;
-  filter: drop-shadow(0px 0px 50px #213457) 
+  /* filter: drop-shadow(0px 0px 50px #213457)  */
+  filter: var(--grid-glow);
 }
 
 button:focus {
@@ -321,24 +348,27 @@ cell {
   align-items: center;
 }
 
-/* cell.unclicked {
-  background-image: url("../images/hexBevelS.png");
+cell.unclicked {
+  background-image: var(--cell-hexBevel);
 }
 
 cell.clicked {
-  background-image: url("../images/hexFlatS.png");
+  background-image: url("../images/hexFlat.png");
 }
 
 cell.flag {
-  background-image: url("../images/hexFlagS.png");
+  background-image: url("../images/hexFlag.png");
 }
 
 cell.maybeFlag {
-  background-image: url("../images/hexMaybeFlagS.png");
-} */
+  background-image: url("../images/hexMaybeFlag.png");
+}
 
 @media only screen and (max-width: 1300px) {
   #help-button {
+    top: 170px;
+  }
+  #dark-light {
     top: 170px;
   }
 }

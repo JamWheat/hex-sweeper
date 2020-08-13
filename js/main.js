@@ -9,7 +9,17 @@ const checkAdjMath = [
   [-1, +1],
   [-1, -1]
 ]
+
 const keys = {}
+
+const colorScheme = {
+  dark: false,
+  changeColorScheme: function() {
+      colorScheme.dark ? colorScheme.dark = false : colorScheme.dark = true
+      const color = colorScheme.dark ? "dark" : ""
+      body.setAttribute("class", color)
+  }
+}
 
 // playerInfo = {}
   // an object that stores player info, such as name, previous scores, and wins
@@ -32,6 +42,8 @@ const startBtn = document.getElementById("start")
 const sizeInput = document.getElementById("boardSize")
 const helpBtn = document.getElementById("help-button")
 const closeHelp = document.getElementById("close-help")
+const body = document.getElementById("body")
+const darkLightBtn = document.getElementById("dark-light")
 //pause button
 //options
 
@@ -97,6 +109,8 @@ helpBtn.addEventListener('click', function(){
 closeHelp.addEventListener('click', function(){
   document.getElementById("helping").style.top = '-900px'
 })
+
+darkLightBtn.addEventListener('click', colorScheme.changeColorScheme)
 // pause
 //options
 
@@ -404,7 +418,7 @@ function render(cell){
       } else if (obj.flag === 'maybeFlag'){
         document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexMaybeFlag.png")'
       } else {
-        document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexBevel.png")'
+        document.getElementById(`${obj.coord}`).parentElement.className = "unclicked"
       }
     } else {
       document.getElementById(`${obj.coord}`).parentElement.style.backgroundImage = 'url("/images/hexFlat.png")'
