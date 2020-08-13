@@ -8,7 +8,7 @@ When finished, the game will play much the same as the classic game Minesweeper
 
 ### Go ahead and play the work-in-progress version!
 
-[Hex Sweeper](hex-sweeper.surge.sh)
+[Hex Sweeper](http://hex-sweeper.surge.sh)
 
 (still a work in progress, but not too shabby!)
 

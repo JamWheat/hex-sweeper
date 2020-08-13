@@ -49,6 +49,7 @@ body.dark {
 }
 
 #dark-light {
+  z-index: 5;
   position: fixed;
   top: 30px;
   left: 30px;
@@ -90,20 +91,10 @@ body.dark {
   align-items: center;
   position: absolute;
   width: 300px;
-  top: 250px;
+  top: -300px;
   left: 50%;
   margin-left: -150px;
   top: -400px;
-}
-
-#mine-counter {
-  color: rgba(51, 57, 80, 0);
-  transition: color .5s linear;
-}
-
-#timer {
-  color: rgba(51, 57, 80, 0);
-  transition: color .5s linear;
 }
 
 header {
@@ -321,7 +312,6 @@ button:hover {
 #grid {
   display: grid;
   margin-top: 150px;
-  /* filter: drop-shadow(0px 0px 50px #213457)  */
   filter: var(--grid-glow);
 }
 

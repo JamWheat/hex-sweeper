@@ -273,18 +273,16 @@ function init(){
   winner = false
   boom = false
   groundZero = ''
+  winWin.style.top = '-500px'
   winWin.innerHTML = ''
-  winWin.style.top = '-100px'
   seconds = 0
   flagTotal = 0
   mineTotal = 0
   clearInterval(timerInterval)
   started = false
   gameOver = false
-  mineCounter.style.color = 'rgba(51, 57, 80, 00)'
-  timer.style.color = 'rgba(51, 57, 80, 00)'
-  // mineCounter.innerText = ''
-  // timer.innerText = ''
+  mineCounter.innerText = ''
+  timer.innerText = ''
 }
 
 function firstClick(cell){
@@ -388,28 +386,26 @@ function checkWin(cell){
 function render(cell){
   if (winner){
     winWin.style.top = '250px'
-    winWin.innerHTML = `<p>Congratulations!</p><p>You found all ${mineTotal} mines in ${seconds} seconds!</p><p>Press Reset to play again.</p>`
+    mineCounter.innerText = 'mines left: 0'
+    winWin.innerHTML = `<p>Congratulations!</p><p>With a grid size of ${boardSize} you found all ${mineTotal} mines in ${seconds} seconds!</p><p>Press Reset to play again.</p>`
   }
-  timer.innerText = seconds
+  // timer.innerText = seconds
   if (!started) {
     mineCounter.innerText = `Click a cell to start!`
-    timer.innerText = '000'
-    timer.style.color = 'rgba(51, 57, 80, 100)'
-    mineCounter.style.color = 'rgba(51, 57, 80, 100)'
   } else {
-    mineCounter.innerText = `Mines Left: ${mineTotal - flagTotal}`
+    mineCounter.innerText = `mines left: ${mineTotal - flagTotal}`
     if (seconds < 10){
-      timer.innerText = `00${seconds}`
+      timer.innerText = `time: 00${seconds}`
     } else if (seconds < 100) {
-      timer.innerText = `0${seconds}`
+      timer.innerText = `time: 0${seconds}`
     } else {
-     timer.innerText = seconds
+     timer.innerText = `time: ${seconds}`
     }
   }
   if (mineTotal - flagTotal < 0){
     mineCounter.style.color = 'red'
   } else (
-    mineCounter.style.color = 'rgba(51, 57, 80, 100)'
+    mineCounter.style.color = defaultStatus
   )
   cellData.forEach(function(obj){
     if (obj.beenClicked === false){
