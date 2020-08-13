@@ -30,6 +30,8 @@ const winWin = document.getElementById("win-win")
 const welcome = document.getElementById("welcome")
 const startBtn = document.getElementById("start")
 const sizeInput = document.getElementById("boardSize")
+const helpBtn = document.getElementById("help-button")
+const closeHelp = document.getElementById("close-help")
 //pause button
 //options
 
@@ -84,6 +86,13 @@ startBtn.addEventListener('click', function(){
   buildABoard(parseInt(boardSize))
 })
 
+helpBtn.addEventListener('click', function(){
+  document.getElementById("helping").style.top = '200px'
+})
+
+closeHelp.addEventListener('click', function(){
+  document.getElementById("helping").style.top = '-900px'
+})
 // pause
 //options
 
