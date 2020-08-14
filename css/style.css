@@ -411,7 +411,7 @@ cell.flagNotMine {
 }
 
 cell.mineFlag {
-  background-image: var(--cell-hexFlag);
+  background-image: var(--cell-hexMineFlag);
 }
 
 cell.mineExploded {

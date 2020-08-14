@@ -78,7 +78,7 @@ startBtn.addEventListener('click', function(){
     sizeInput.placeholder = 'numbers only'
     return
   }
-  if (parseInt(sizeInput.value) < 4 || parseInt(sizeInput.value) > 70 ) {
+  if (parseInt(sizeInput.value) < 6 || parseInt(sizeInput.value) > 70 ) {
     sizeInput.value = ''
     sizeInput.placeholder = '6 to 70'
     return
@@ -415,7 +415,6 @@ function render(cell){
       timer.innerText = ''
       mineCounter.className = 'red'
       mineCounter.innerHTML = 'BOOOM! You hit a mine.<br>Hit Reset to try again!'
-
       if (obj.hasMine) {
         document.getElementById(`${obj.coord}`).parentElement.className = 'mine'
       }
@@ -438,13 +437,16 @@ function render(cell){
 
 /*-----TO DO---------
 
+  - force how to play window to center of window
+  - make how to play button a digital input
   - thinking mouse cursor for mine placement?
   - add sounds
   - pause button
   - options
   - themes
+  - Move images to imgur (or similar)
   - sounds
   - player info tracking for "themeChievments"
-  - Move images to imgur (or similar)
+  - high score table
 
---------------------------*/
+-------------------*/
