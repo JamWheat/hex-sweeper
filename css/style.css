@@ -23,6 +23,7 @@ body {
   margin: 30px;
   font-size: 2.4rem;
   height: 100vh;
+  --light-dark-btn-content: "Dark Mode";
   --color: #333950;
   --red: #8d2c2c;
   --window-back: linear-gradient(180deg, #808eb1, #aabbe7);
@@ -57,6 +58,7 @@ body {
 body.dark {
   background: radial-gradient(#545969, #0d0e16);
   color: #96a3d8;
+  --light-dark-btn-content: "Light Mode";
   --color: #96a3d8;
   --red: #db5f5f;
   --window-back: linear-gradient(180deg, #2E3D63, #4a6097);
@@ -94,6 +96,10 @@ body.dark {
   top: 30px;
   left: 30px;
   box-shadow: var(--window-shadow);
+}
+
+#dark-light::after{
+  content: var(--light-dark-btn-content)
 }
 
 .window{

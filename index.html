@@ -9,7 +9,7 @@
   <title>Hex Sweeper</title>
 </head>
 <body id="body">
-  <button id="dark-light">Dark Mode</button>
+  <button id="dark-light"></button>
   <div id="win-win" class="window"></div>
   <div id="welcome" class="window">
     <div>
@@ -48,11 +48,12 @@
   <div class="window" id="helping">
     <button id="close-help">X</button>
     <div id="how-to-play">
-      <div class="help-center"><h2>How to Play</h2><p>The object of Hex Sweeper is to open all off the empty cells without hitting any mines. Hitting even one mine ends the game!</p><hr></div>
+      <div class="help-center"><h2>How to Play</h2><p>The object of Hex Sweeper is to open all of the empty cells without hitting any mines. Hitting even one mine ends the game!</p><hr></div>
       <div><img src="images/howToPlay0.png"><br>Most of the cells are empty, but some of them contain mines. Clicking on a mine will detonate it and every other mine on the board, and that's game over!</div>
       <div><hr><img src="images/howToPlay1a.png"><img class="righty" height="185" src="images/howToPlay1b.png">Left click on a cell to open it. If the cell is empty, the surrounding cells will automatically open. Don't worry, your first click will never be on a mine!</div>
       <div><hr><img src="images/howToPlay2.png"><br>The number on an empty cell tells you how many mines are adjecent to that cell. Use that information to figure out where the mines are (more on that soon).</div>
       <div><hr><img src="images/howToPlay3.png">Right click on a closed cell to put a flag on it. You can't open a flagged cell, and this will keep track of how many mines you have left to find.<br>Be careful! The mine counter will go down even if there is not actually a mine in the cell you flagged!</div>
+      <div><hr><img height="180" src="images/howToPlay5.png">Right click again on a flagged cell to mark it with a question flag. Use these if you are not sure where a mine might be and you want to come back when you have more information. Question flags do not tick down your remaining mine count.<br><br>Right click one more time to clear the all flags off a cell.</div>
       <div><hr><img src="images/howToPlay4.png">Left click on an open cell to automatically open adjecent cells (unless they have a flag on them). This helps speed things up when you know where a mine is, but be careful! If you are wrong this can open a cell with a mine and it will be game over!</div>
       <div class="help-center"><br><h2>Gameplay Example</h2></div>
       <div><hr><img src="images/example0.png">Take a look at this situation. Each of the circled cells are adjacent to exactly as many closed cells as they are indicating they have adjacent mines.<br><br> The 3 is touching three cells, and the 1s are touching one.</div>

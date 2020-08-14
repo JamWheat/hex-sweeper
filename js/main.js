@@ -1,6 +1,6 @@
 /*------Constants--------*/
-let cellData = [
-]
+let cellData = []
+
 const checkAdjMath = [
   [0, -2],
   [+1, -1],
@@ -21,14 +21,8 @@ const colorScheme = {
   }
 }
 
-// playerInfo = {}
-  // an object that stores player info, such as name, previous scores, and wins
-// options = []
-  // an array of player options for the game to check back on when needed. for example, index 5 could be eight a 0 or a 1, representing if the player wants to view the timer. render would then check this value
-
 /*------Variables--------*/
 let gameOver, mineTotal, started, timerInterval, seconds, flagTotal, winner, boom, groundZero, randIncrease, boardSize
-// combine winner, boom, and gameOver to one variable with string or number that functions can check for game states?
 
 
 /*------Cached Element References--------*/
@@ -44,8 +38,6 @@ const helpBtn = document.getElementById("help-button")
 const closeHelp = document.getElementById("close-help")
 const body = document.getElementById("body")
 const darkLightBtn = document.getElementById("dark-light")
-//pause button
-//options
 
 /*------Event Listeners--------*/
 gridAll.addEventListener('click', function(clicked){
@@ -86,7 +78,7 @@ startBtn.addEventListener('click', function(){
     sizeInput.placeholder = 'numbers only'
     return
   }
-  if (parseInt(sizeInput.value) < 6 || parseInt(sizeInput.value) > 70 ) {
+  if (parseInt(sizeInput.value) < 4 || parseInt(sizeInput.value) > 70 ) {
     sizeInput.value = ''
     sizeInput.placeholder = '6 to 70'
     return
@@ -111,8 +103,6 @@ closeHelp.addEventListener('click', function(){
 })
 
 darkLightBtn.addEventListener('click', colorScheme.changeColorScheme)
-// pause
-//options
 
 document.addEventListener('keydown', function(e){
   keys[e.key] = true
@@ -132,6 +122,14 @@ document.addEventListener('keyup', function(e){
 })
 
 /*------Tool Functions--------*/
+checkUserColorSchemePreference()
+
+function checkUserColorSchemePreference() {
+  if (window.matchMedia("(prefers-color-scheme:dark)").matches) {
+    colorScheme.changeColorScheme()
+  }
+}
+
 function tick(){
   seconds++
   render()
@@ -142,12 +140,6 @@ function startTimer(){
 }
 
 rando = (arg) => (Math.random() < arg) ? 1 : 0;
-
-// don't need this in the new control flow?
-function findCell(input){
-  let output = cellData.find((arr) => arr.coord === input.target.id)
-  return output
-}
 
 function listAdjCells(cell){
   let whereY = cell.coord.indexOf('y')
@@ -266,7 +258,6 @@ function buildABoard(length){
 init()
 
 function init(){
-  benMode = false
   window.scrollTo(0,0)
   cellData = []
   gridAll.innerHTML = ''
@@ -274,7 +265,6 @@ function init(){
   boom = false
   groundZero = ''
   winWin.style.top = '-500px'
-  winWin.innerHTML = ''
   seconds = 0
   flagTotal = 0
   mineTotal = 0
@@ -300,7 +290,7 @@ function firstClick(cell){
         randFactor = .1
         mineTotal++
       } else {
-        //right now, player's mineDensity choice affects randIncreas
+        //right now, player's mineDensity choice affects randIncrease
         //would it make more sense to have it effect randFactor?
         randFactor = randFactor + randIncrease
       }
@@ -368,11 +358,11 @@ function flagMine(cell){
 }
 
 function checkWin(cell){
-  let clickedTotal = 0                //
-  cellData.forEach(function(obj){     //
-    if (obj.beenClicked === true){    //  Convert to .reduce()?
-      clickedTotal++                  //
-    }                                 //
+  let clickedTotal = 0
+  cellData.forEach(function(obj){
+    if (obj.beenClicked === true){
+      clickedTotal++
+    }
   })
   if (mineTotal + clickedTotal === cellData.length){
     clearInterval(timerInterval)
@@ -448,8 +438,7 @@ function render(cell){
 
 /*-----TO DO---------
 
-- Short Term
-  - thinking mouse cursor for mouse placement?
+  - thinking mouse cursor for mine placement?
   - add sounds
   - pause button
   - options

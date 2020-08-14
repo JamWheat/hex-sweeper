@@ -2,15 +2,7 @@
 
 ## Being a game quite similar (but not exactly the same) to a game you are likely familiar with
 
-### Intent
-
-When finished, the game will play much the same as the classic game Minesweeper, except that it will be played on a hex grid (which, though it makes the board look fancier, is actually easier to play than traditional Minesweeper).
-
-### Go ahead and play the work-in-progress version!
-
-[Hex Sweeper](http://hex-sweeper.surge.sh)
-
-(still a work in progress, but not too shabby!)
+Hex Sweeper is a logic game in which players are trying to clear a grid of cells without hitting any mines. When the game starts players are presented with a grid of cells, most of which are empty, but some contain mines. Clicking on a cell opens it, and if the cell is empty if may show a number, incicarting how many adjacent cells contain mines. From this information the player attempts to click on every unmined cell, but if at any time a mine is revealed it and all the other mines on the board explode, ending the game.
 
 ### Technologies Used
 
@@ -20,31 +12,45 @@ When finished, the game will play much the same as the classic game Minesweeper
 - Deployed via [surge.sh](surge.sh)
 - Nunito font, by Vernon Adams
 
-### Wireframe mockup of player's view
+### Screen Shots
 
-![CSS grid concept](https://i.imgur.com/x86Sp3M.png)
+|  |     |
+|---------|------------------|
+|![Hex Sweeper Screen Shot 1](https://i.imgur.com/bKlkNvk.png)|![Hex Sweeper Screen Shot 1](https://i.imgur.com/pDdQvUk.png)|
+|![Hex Sweeper Screen Shot 1](https://i.imgur.com/v1soZCU.png)|![Hex Sweeper Screen Shot 1](https://i.imgur.com/vYB3J7b.png)
 
-### Minimum Planned Features
+### Gameplay Overview
 
-- When the game starts up the player will be presented with a window asking for how large a board they would like to play on (from small, medium, and large) and mine density.
-- Once they make their choice, they are presented with an untouched play field. They will see a counter for the number of remaining mines, a timer, a reset button, and an options button.
+- When the game starts up the player will be presented with a window asking for how large a board they would like to play on and how many mines they want to deal with.
+- Once they make their choice, they are presented with an untouched play field, generated to their size preference. They will see a counter for the number of remaining mines, a timer, a reset button, and an options button.
 - The options button may include an option to hide the timer and a link to the high scores table.
 - On their fist click, a timer will start, as a means of keeping score.
 - The player will click on cells; if there is no mine they are told how many cells adjacent that cell DO have minds, if any.
 - Using this information, the player can deduce where the mines are in the field and mark them.
 - The player can right click on a cell to mark it with a flag. This prevents the player from clicking on that cell again, as well as ticks down a counter showing the remaining mines on the field (whether or not the player was correct). A second right click on a flagged cell will change it to a question mark to help the player make deduction in ambiguous situations. A third right click will clear the cell.
-- If the player wishes, they can pause the timer, but doing so will obscure the board in some way, so they cannot cheat by considering a move while the timer is stopped.
+- If a player left mouse clicks on a numbered cell, the game will open all adjacent unclicked and unflagged cells (which may end up hitting on a mine).
 - If the player clicks on a mine, all mines on the board explode, ending the game (a color-coding system shows which mines were correctly found, which mines were never found, and which flags were never on a mine to begin with).
-- If the player finds all the mines and reveals every empty cell, they win! The game asks for their name and logs a high score.
+- If the player finds all the mines and reveals every empty cell, they win!
 - Either way, the player can then start a new game. If they choose to, the game will ask them if they want a new board with the same settings or to select new settings.
 
-### Optimal Planned Features
+### Getting Started
 
-- If a player left mouse clicks on a numbered cell, the game will clickCheck all adjacent unclicked and unflagged cells (which may end up clicking on a mine).
+Click to play!
+
+[Hex Sweeper](http://hex-sweeper.surge.sh)
+
+### Next Steps
+
+I have a number of future features planned, including but not limited to:
+
+- The player will be able to pause the timer (though if they do the board will be obscured so they can't be cheaty and plan moves while the clock is stopped).
 - The game will have sounds when the player clicks on cells and especially when they click on a mine. An option in the options menu, or perhaps an icon in the main play space, will allow them to disable these sounds.
+- Hich score tracking, which will also be away to keep track of a player's progress towards ThemeChievments.
 - As the player plays, they will unlock themes for the board, such as a space scene or an island, that also include ambient sound and sounds specific to that theme.
-- Rather than being presented with three choices of board size, the player can choose a custom board size (within an upper and lower bound). The game will then render an appropriately sized board dynamically.
-- I am not sure what the upper bound might be, or if the board will scale to fit the browser window vs being scrollable if it is too much to see at once. If I allow the player to scroll they may be able to make the board ginormous without losing readability, making for some interesting challenge.
+
+### Original wireframe mockup of player's view
+
+![CSS grid concept](https://i.imgur.com/x86Sp3M.png)
 
 ### User Stories
 
@@ -64,7 +70,7 @@ When finished, the game will play much the same as the classic game Minesweeper
   - **Done** code js cached elements and event listeners on container to bubble down to hexes
   - >Update: to more effectively be able to get ids from event clicks, I've made the hex images the *background* of the cells. This may end up having a number of benefits anyway.
   - **Done** check if clicking on hexes logs their id, make sure there is no overlap
-  - >Update: Ah, and here is the rub. As suspected, the top left corner of each cell intrudes into the cell in that direction quite a bit, likely enough to cause significant impact to the user experience. So, new task:
+  - >Update: Ah, and here is the rub. As suspected, the top left and right corners of each cell intrudes into the cells above quite a bit, likely enough to cause significant impact to the user experience. So, new task:
   - **Done** experiment with round buttons in the cells to see if that reduces the overlap problem.
   - > Yep, that did the trick! Round buttons that *almost* fill up the hex do not have any overlap. They don't quite get the vertices of the hexes, but that may actually be a feature, as it will avoid any ambiguity as to exactly where the player clicks. Okay, now to actually code a game...
 - **Done** Build prototype game to test cell neighbor detection
@@ -106,11 +112,12 @@ When finished, the game will play much the same as the classic game Minesweeper
   - theme menu
   - disable sounds
 - **Done** make it look pretty
+- **Done** add Dark Mode
 - make it look pretty again and again with themes
 - add sounds
 - "soft click" functionality, graphics
   - >The browser already takes care of the functionality (mostly, the console does throw up an error that has me mildly worried).
 - **Done** allowing scollability?
-  - > Yeah, duh, a person can just scroll the browser window with the arrow keys like always (though I did add wasd controls as a quality of life improvement).
+  - > Yeah, duh, a person can just scroll the browser window with the arrow keys like always (though I did add wasd controls as a quality of life feature).
 - grab and scroll?
-- allowing **_zoomability???_**
+- **_zoomability???_**
